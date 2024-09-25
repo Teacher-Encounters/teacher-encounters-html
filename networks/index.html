@@ -1,48 +1,80 @@
----
-description: 1.3 - Exchanging Data -> 1.3.3 - Networks
----
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../css/style.css" rel="stylesheet">
+		<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+	</head>
+	<body>
 
-# Development of Networks
+<h1> Development of Networks</h1>
 
+<p>
 Networks are the means by which multiple computer systems can be connected together for the purposes of sharing resources. There are a variety of network models you need to understand, so let's see how those developed by telling a story.
+</p>
 
-## A Law Firm
+<h2>A Law Firm</h2>
 
-A law firm have just moved into their offices. They employ the following:
+<p>A law firm have just moved into their offices. They employ the following:</p>
 
-* Lawyer - The courtroom presence of the firm, maintains files on clients and organises their defence
-* Investigator - Gathers intel on their cases
-* Accountant - keeps track of incomings & outgoings
+<ul>
+  <li> Lawyer - The courtroom presence of the firm, maintains files on clients and organises their defence</li>
+  <li> Investigator - Gathers intel on their cases</li>
+  <li> Accountant - keeps track of incomings & outgoings</li>
+</ul>
 
-### First Setup - Independent Machines
+<h3> First Setup - Independent Machines</h3>
 
+<p>
 Initially they each have their own computer, but they are not networked in any way. Each employee does their job largely in isolation. When they need to share files they use a USB stick to move files from one machine to another. Here is a diagram of this initial setup.
+</p>
 
 ![Initial Setup - Independent Machines](<../.gitbook/assets/image (1).png>)
 
-### Second Setup - Peer to Peer file sharing
+<h3> Second Setup - Peer to Peer file sharing</h3>
 
+<p>
 After a while, they become rather tired of having to copy files using the USB stick, so they decide to network the machines together. For this they need the following hardware:
+</p>
 
-* NIC - Network Interface Cards for each machine
-* Cables - Copper Ethernet cables generally used in LANs
-* Switch - For connecting machines together
+<ul>
+  <li>NIC - Network Interface Cards for each machine</li>
+  <li> Cables - Copper Ethernet cables generally used in LANs</li>
+<li> Switch - For connecting machines together</li>
+</ul>
 
+<p>
 For this they invest in a **switch** and connect the machines to form a Local Area Network (LAN). A **LAN** is a network that
+</p>
 
-* Covers a small geographical area
-* The hardware is usually owned by a single organisation
+<ul>
+  <li>Covers a small geographical area</li>
+  <li>The hardware is usually owned by a single organisation</li>
 
+</ul>
+
+<p>
 Networking their computers gives the following benefits
+</p>
 
-* Easier to share files (and other resources like printers)
+<ul>
+  <li> Easier to share files (and other resources like printers)</li>
+</ul>
 
+<p>
 But it incurs the following risks:
+</p>
 
-* Viruses can spread more easily, with constant connection between machines
-* Cost of network hardware (although at this stage, relatively low)
+<ul>
+  <li>Viruses can spread more easily, with constant connection between machines</li>
+  <li>Cost of network hardware (although at this stage, relatively low)</li>
+</ul>
 
+<p>
 The three employees still store their files on their own machines, but they are able to see the files on the other machines. This model of sharing is known as **Peer to Peer**. Characteristics of this are
+</p>
 
 * All machines are equal, they have the same role of storing, providing and accessing files
 * Each peer is responsible for providing its own
