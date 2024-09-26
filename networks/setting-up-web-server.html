@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting up Web Server</title>
+</head>
+<body>
+    <h1>Setting up Web Server</h1>
+    <p>This tutorial will assume you have built a simple LAN. The PCs already have the following configuration.</p>
+    <img src="../../.gitbook/assets/image (41).png" alt="Starting LAN">
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Device</th>
+                <th>IP Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PC 1</td>
+                <td>192.168.0.2</td>
+            </tr>
+            <tr>
+                <td>PC 2</td>
+                <td>192.168.0.3</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>Add a Server</h2>
+    <ol>
+        <li>Click on <em>End Devices</em> category</li>
+        <li>Click on <em>End Devices</em> sub category</li>
+        <li>Click on <em>Server</em> and drag it onto your network</li>
+    </ol>
+    <img src="../../.gitbook/assets/image (42).png" alt="Add Server">
+    
+    <h2>Configure and Connect Server</h2>
+    <ol>
+        <li>Click on the server to bring up its <em>Physical Config</em> window</li>
+        <li>Click on the <em>Config</em> tab</li>
+        <li>Click on the <em>Fast Ethernet 0</em> module</li>
+        <li>Enter IP address of 192.168.0.250</li>
+        <li>Click into Subnet mask, it should populate automatically</li>
+        <li>Close the config screen</li>
+        <li>Use <em>Copper Straight Through</em> to connect one of the <em>Fast Ethernet <x></em> ports on the <em>Switch</em> to <em>Fast Ethernet 0</em> on the <em>Server</em></li>
+    </ol>
+    <img src="../../.gitbook/assets/image (43).png" alt="Server Physical Config">
+    <img src="../../.gitbook/assets/image (44).png" alt="Server Module Config">
+    <img src="../../.gitbook/assets/image (45).png" alt="Server Connect Fast Ethernet">
+    
+    <h2>Setup HTTP server</h2>
+    <ol>
+        <li>Click on the <em>Server</em> to open the server config window</li>
+        <li>Click on the <em>Services</em> tab</li>
+        <li>Click on the <em>HTTP</em> service module - from here you can configure the web server, it should be on by default. You can edit the contents of the HTML, CSS, and JavaScript files being served from here</li>
+        <li>Close the server config window</li>
+        <li>Click on one of the PCs to open their config window</li>
+        <li>Click on the <em>Desktop</em> tab</li>
+        <li>Click on the <em>Web Browser</em></li>
+        <li>Type the IP address of the server into the address bar <strong>192.168.0.250</strong></li>
+        <li>Click on <em>Go</em> and you should be presented with the web page being served</li>
+    </ol>
+    <img src="../../.gitbook/assets/image (46).png" alt="HTTP Server Config">
+    <img src="../../.gitbook/assets/image (47).png" alt="PC Desktop">
+    <img src="../../.gitbook/assets/image (48).png" alt="Visiting a Web Page">
+    
+    <h2>Setup DNS on Server</h2>
+    <p>One of the key protocols you need to understand is the Domain Name Service/System (DNS).</p>
+    <p>It is the method by which we can visit URLs like bbc.co.uk, rather than having to know the IP addresses of all our favourite sites.</p>
+    <ol>
+        <li>Click on the Server to open the Config window</li>
+        <li>Click on <em>Services</em> to open the service tab</li>
+        <li>Click on <em>DNS</em> to configure the Domain Name Service</li>
+        <li>Turn DNS on</li>
+        <li>Create a domain for this web server, I will use <strong>mysite.com</strong>. Type that into the <em>Name</em> field</li>
+        <li>Type the IP address of this web server into the <em>Address</em> box</li>
+        <li>Click on <em>Add</em> to add the A Record for that site</li>
+    </ol>
+    <img src="../../.gitbook/assets/image (49).png" alt="Enter 'A Record' details">
+    <img src="../../.gitbook/assets/image (50).png" alt="'A Record' created">
+    
+    <h2>Setup DNS on PCs</h2>
+    <p>Now that we have a DNS running on the server, we need to tell each PC. This can be part of the DHCP setup, but since we are doing things manually, we will need to tell each PC about our DNS.</p>
+    <ol>
+        <li>Click on a PC</li>
+        <li>Click on the <em>Config</em> tab</li>
+        <li>Click on <em>Settings</em> module</li>
+        <li>Enter DNS IP address of <strong>192.168.0.250</strong> into the DNS box</li>
+        <li>Click on the <em>Desktop</em> tab</li>
+        <li>Open the <em>Web Browser</em></li>
+        <li>Try to visit <strong>mysite.com</strong> in the web browser and it should open the same page as before</li>
+    </ol>
+    <img src="../../.gitbook/assets/image (51).png" alt="Setup DNS on PC">
+    <img src="../../.gitbook/assets/image (52).png" alt="Visit Web page using DNS">
+</body>
+</html>

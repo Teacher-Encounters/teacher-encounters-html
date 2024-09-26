@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting up Email (SMTP)</title>
+</head>
+<body>
+    <h1>Setting up Email (SMTP)</h1>
+    <p>This tutorial assumes you have set up a LAN with a server. The server should have DNS enabled.</p>
+    
+    <h2>Setup Email on Server</h2>
+    <ol>
+        <li>Click on the server to open its config window</li>
+        <li>Click on <em>Services</em> to open the module configuration</li>
+        <li>Click on <em>Email</em></li>
+        <li>Enter <strong>marling.school.com</strong> into the <em>Domain Name</em> and click on <em>Set</em></li>
+        <li>Add a couple of users
+            <ul>
+                <li>User: <strong>bob</strong>, Password: <strong>monkeybusdriver</strong></li>
+                <li>User: <strong>alice</strong>, Password: <strong>meltedcremeegg</strong></li>
+            </ul>
+        </li>
+    </ol>
+    <img src="../../.gitbook/assets/image (64).png" alt="Server Email Configuration">
+    <img src="../../.gitbook/assets/image (62).png" alt="Add Users">
+    
+    <h2>Setup DNS for Mail Server</h2>
+    <ol>
+        <li>Within the <em>Server</em> config window, click on <em>Services</em></li>
+        <li>Click on the <em>DNS</em> service</li>
+        <li>Add an 'A Record' for <strong>mail.marling.school</strong> that points to the server's IP address</li>
+    </ol>
+    <p>Note: I had an existing DNS record <em>mysite.com</em> which we could have used, but I'm creating a distinct record just so it looks more like a real-life domain.</p>
+    <img src="../../.gitbook/assets/image (63).png" alt="Mail Server DNS">
+    
+    <h2>Setup Email on PC</h2>
+    <ol>
+        <li>Click on the PC to bring up the PC Configuration Window</li>
+        <li>Click on <em>Desktop</em> to open the PC desktop</li>
+        <li>Click on <em>Email</em> to bring up the email application</li>
+        <li>Enter the details of one of the users (either bob or alice)
+            <ul>
+                <li>The email address should be bob@marling.school.com, this is a combination of the username and the email domain</li>
+            </ul>
+        </li>
+        <li>Repeat on the other PC, but for the other user</li>
+    </ol>
+    <img src="../../.gitbook/assets/image (66).png" alt="Desktop PC - Select Email">
+    <img src="../../.gitbook/assets/image (67).png" alt="PC Configure Email">
+    
+    <h2>Send an Email</h2>
+    <p>Now that each PC is configured with an email address, when you visit the email application you will be presented with a basic email client. You can compose a message from one PC to another.</p>
+    <ol>
+        <li>Click on <em>Compose</em></li>
+        <li>Enter details of email to alice</li>
+        <li>Send the email</li>
+        <li>It should output a log to indicate success</li>
+        <li>Go to the email application on the other PC and check it was received</li>
+    </ol>
+    <img src="../../.gitbook/assets/image (68).png" alt="PC Email Client">
+    <img src="../../.gitbook/assets/image (69).png" alt="Compose Email">
+    <img src="../../.gitbook/assets/image (72).png" alt="Email Received">
+</body>
+</html>
