@@ -1,33 +1,7 @@
-const NAV_ITEMS = [
-  {
-    title: "Home",
-    href: "index.html",
-  },
-  {
-    title: "Networks",
-    href: "networks/index.html",
-  },
-  {
-    title: "A Level",
-    href: "a-level/index.html",
-  },
-  {
-    title: "Industry Profiles",
-    href: "industry-profiles/",
-  },
-  {
-    title: "Software Development Lifecycle",
-    href: "industry-profiles/software-dev-lifecycle.html",
-  },
-  {
-    title: "Team Structure",
-    href: "industry-profiles/team-structure.html",
-  },
-];
-
 class NavBar extends HTMLElement {
-  constructor() {
+  constructor(navItems) {
     super();
+    this.navItems = navItems;
   }
 
   connectedCallback() {
@@ -39,7 +13,7 @@ class NavBar extends HTMLElement {
 
     // Create spans
     const wrapper = document.createElement("ul");
-    for (const navItem of NAV_ITEMS) {
+    for (const navItem of this.navItems) {
       const li = document.createElement("li");
       if (current === navItem.title) {
         li.classList.add("currentNav");
@@ -92,4 +66,68 @@ background-color: #04AA6D;
   }
 }
 
-customElements.define("nav-bar", NavBar);
+const ROOT_NAV_ITEMS = [
+  {
+    title: "Home",
+    href: "index.html",
+  },
+  {
+    title: "Networks",
+    href: "networks/index.html",
+  },
+  {
+    title: "A Level",
+    href: "a-level/index.html",
+  },
+  {
+    title: "Industry Profiles",
+    href: "industry-profiles/",
+  },
+  {
+    title: "Software Development Lifecycle",
+    href: "industry-profiles/software-dev-lifecycle.html",
+  },
+  {
+    title: "Team Structure",
+    href: "industry-profiles/team-structure.html",
+  },
+];
+
+class RootNavBar extends NavBar {
+  constructor() {
+    super(ROOT_NAV_ITEMS);
+  }
+}
+
+customElements.define("root-nav-bar", RootNavBar);
+
+const NETWORK_NAV_ITEMS = [
+  {
+    title: "LAN",
+    href: "building-simple-lan.html",
+  },
+  {
+    title: "DHCP",
+    href: "setting-up-dhcp.html",
+  },
+  {
+    title: "Email",
+    href: "setting-up-email.html",
+  },
+  {
+    title: "Web Server",
+    href: "setting-up-web-server.html",
+  },
+  {
+    title: "Routing",
+    href: "using-routing-connect-two-lans.html",
+  },
+];
+
+class NetworkNavBar extends NavBar {
+  constructor() {
+    super(NETWORK_NAV_ITEMS);
+  }
+}
+
+customElements.define("network-nav-bar", NetworkNavBar);
