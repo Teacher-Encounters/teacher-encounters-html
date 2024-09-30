@@ -1,9 +1,10 @@
 import sheet from "./navBar.css" with { type: "css" };
 
 export class NavBar extends HTMLElement {
-  constructor(navItems) {
+  constructor(navItems, isRoot = false) {
     super();
     this.navItems = navItems;
+    this.isRoot = isRoot
   }
 
   connectedCallback() {
@@ -14,6 +15,9 @@ export class NavBar extends HTMLElement {
 
     // Create spans
     const wrapper = document.createElement("ul");
+    if (this.isRoot) {
+      wrapper.classList.add("rootNav")
+    }
     for (const navItem of this.navItems) {
       const li = document.createElement("li");
       if (current === navItem.title) {

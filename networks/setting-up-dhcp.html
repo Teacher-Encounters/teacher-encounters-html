@@ -3,55 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="../css/style.css" rel="stylesheet">
-		<script type="module" src="../rootNavBar.js"></script>
-		<script type="module" src='./networkNavBar.js'></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <script type="module" src="../rootNavBar.js"></script>
+    <script type="module" src='./networkNavBar.js'></script>
     <title>Setting up DHCP</title>
 </head>
 <body>
-	  <root-nav-bar current='Networks' relative="../"></root-nav-bar>
-	  <network-nav-bar current="DHCP" relative="../networks/"></network-nav-bar>
-    <h1>Setting up DHCP</h1>
-    <p>Devices on a home LAN are generally allocated IP addresses automatically when they connect to the network. To do this, a DHCP server must be running on the network.</p>
-    <p>I am assuming you have set up a small LAN with a server, like the one built on this page:</p>
-    <p>
-        <a href="./setting-up-web-server">setting-up-web-server</a>
-    </p>
-    
-    <h2>Setup DHCP on the Server</h2>
-    <ol>
-        <li>Click on the <em>Server</em> in your network</li>
-        <li>Click on the <em>Services</em> tab</li>
-        <li>Click on <em>DHCP</em> module</li>
-        <li>Turn DHCP on</li>
-        <li>Set default Gateway to <strong>192.168.0.1</strong> (or the IP of any existing router on this LAN)</li>
-        <li>Set the DNS server to <strong>192.168.0.250</strong> (the IP address of this server)</li>
-        <li>Set the Start of range to <strong>192.168.0.5</strong></li>
-        <li>Click on <em>Save</em> to save these details as the <em>serverPool</em></li>
-        <li>Close the window</li>
-    </ol>
-    <img src="../.gitbook/assets/image (58).png" alt="Server Setup DHCP">
-    
-    <h2>Setup IP details on Server</h2>
-    <p>The server itself must have a full manual configuration, otherwise things don't quite work. The server cannot use 'itself' as a DHCP server.</p>
-    <ol>
-        <li>Click on the <em>Server</em> to open its config window</li>
-        <li>Click on <em>Desktop</em> to open the Desktop on the server</li>
-        <li>Click on <em>IP Configuration</em> to open the full IP Configuration application</li>
-        <li>Setup the full details for IPv4 Address, Subnet Mask, Default Gateway, and DNS Server</li>
-        <li>Close that app on the desktop, then close the window</li>
-    </ol>
-    <img src="../.gitbook/assets/image (57).png" alt="Server Desktop">
-    <img src="../.gitbook/assets/image (56).png" alt="Server Desktop IP configuration">
-    
-    <h2>Setup DHCP on each PC</h2>
-    <ol>
-        <li>Click on PC to open config window</li>
-        <li>Click on <em>Desktop</em> to open module configuration</li>
-        <li>Click on the <em>IP Configuration</em> application</li>
-        <li>Click on <em>DHCP</em> under <em>IP Configuration</em> and it should immediately try and retrieve an IP address and show you what it received</li>
-    </ol>
-    <img src="../.gitbook/assets/image (59).png" alt="PC Desktop">
-    <img src="../.gitbook/assets/image (60).png" alt="PC IP Configuration">
+    <root-nav-bar current='Networks' relative="../"></root-nav-bar>
+    <network-nav-bar current="DHCP" relative="../networks/"></network-nav-bar>
+    <main>
+        <h1>Setting up DHCP</h1>
+        <p>Devices on a home LAN are generally allocated IP addresses automatically when they connect to the network. To do this, a DHCP server must be running on the network.</p>
+        <p>I am assuming you have set up a small LAN with a server, like the one built on this page:</p>
+        <p>
+            <a href="./setting-up-web-server">setting-up-web-server</a>
+        </p>
+        
+        <h2>Setup DHCP on the Server</h2>
+        <ol>
+            <li>Click on the <em>Server</em> in your network</li>
+            <li>Click on the <em>Services</em> tab</li>
+            <li>Click on <em>DHCP</em> module</li>
+            <li>Turn DHCP on</li>
+            <li>Set default Gateway to <strong>192.168.0.1</strong> (or the IP of any existing router on this LAN)</li>
+            <li>Set the DNS server to <strong>192.168.0.250</strong> (the IP address of this server)</li>
+            <li>Set the Start of range to <strong>192.168.0.5</strong></li>
+            <li>Click on <em>Save</em> to save these details as the <em>serverPool</em></li>
+            <li>Close the window</li>
+        </ol>
+        <img src="../.gitbook/assets/image (58).png" alt="Server Setup DHCP">
+        
+        <h2>Setup IP details on Server</h2>
+        <p>The server itself must have a full manual configuration, otherwise things don't quite work. The server cannot use 'itself' as a DHCP server.</p>
+        <ol>
+            <li>Click on the <em>Server</em> to open its config window</li>
+            <li>Click on <em>Desktop</em> to open the Desktop on the server</li>
+            <li>Click on <em>IP Configuration</em> to open the full IP Configuration application</li>
+            <li>Setup the full details for IPv4 Address, Subnet Mask, Default Gateway, and DNS Server</li>
+            <li>Close that app on the desktop, then close the window</li>
+        </ol>
+        <img src="../.gitbook/assets/image (57).png" alt="Server Desktop">
+        <img src="../.gitbook/assets/image (56).png" alt="Server Desktop IP configuration">
+        
+        <h2>Setup DHCP on each PC</h2>
+        <ol>
+            <li>Click on PC to open config window</li>
+            <li>Click on <em>Desktop</em> to open module configuration</li>
+            <li>Click on the <em>IP Configuration</em> application</li>
+            <li>Click on <em>DHCP</em> under <em>IP Configuration</em> and it should immediately try and retrieve an IP address and show you what it received</li>
+        </ol>
+        <img src="../.gitbook/assets/image (59).png" alt="PC Desktop">
+        <img src="../.gitbook/assets/image (60).png" alt="PC IP Configuration">
+    </main>
 </body>
 </html>

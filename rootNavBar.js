@@ -29,7 +29,7 @@ const ROOT_NAV_ITEMS = [
 
 class RootNavBar extends NavBar {
   constructor() {
-    super(ROOT_NAV_ITEMS);
+    super(ROOT_NAV_ITEMS, true);
   }
 }
 
