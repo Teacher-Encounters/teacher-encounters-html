@@ -3,71 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="../css/style.css" rel="stylesheet">
-		<script type="module" src="../rootNavBar.js"></script>
-		<script type="module" src='./networkNavBar.js'></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <script type="module" src="../rootNavBar.js"></script>
+    <script type="module" src='./networkNavBar.js'></script>
     <title>Building a Simple LAN</title>
 </head>
 <body>
-	  <root-nav-bar current='Networks' relative="../"></root-nav-bar>
-	  <network-nav-bar current="LAN" relative="../networks/"></network-nav-bar>
-    <h1>Building a Simple LAN</h1>
-    <h2>Place a Switch on the Network</h2>
-    <ul>
-        <li>Click on <em>Network Device</em> category</li>
-        <li>Click on <em>Switch</em> sub category</li>
-        <li>Place a <em>2960</em> switch onto the network</li>
-    </ul>
-    <img src="../.gitbook/assets/image (14).png" alt="Placing a Switch">
-    
-    <h2>Place Two PCs on the Network</h2>
-    <ol>
-        <li>Click on <em>End Device</em> category</li>
-        <li>Click on <em>End Device</em> sub category</li>
-        <li>Place two PCs onto the network</li>
-    </ol>
-    <img src="../.gitbook/assets/image (15).png" alt="Placing Two PCs">
-    
-    <h2>Physically Connect PCs to the Switch</h2>
-    <ol>
-        <li>Select <em>Connections</em> category</li>
-        <li>Select <em>Connections</em> sub category (likely selected by default)</li>
-        <li>Select <em>Copper Straight Through</em> from devices</li>
-        <li>Click on one of the PCs</li>
-        <li>Select <em>Fast Ethernet 0</em></li>
-        <li>Click on the Switch</li>
-        <li>Select one of the <em>Fast Ethernet <x></em> ports</li>
-    </ol>
-    <img src="../.gitbook/assets/image (16).png" alt="Select Copper Straight Through">
-    <img src="../.gitbook/assets/image (17).png" alt="Connect to PC">
-    <img src="../.gitbook/assets/image (18).png" alt="Connect to Switch">
-    <img src="../.gitbook/assets/image (19).png" alt="Physical Connections Made">
-    
-    <h2>Setup Static IP addresses on PCs</h2>
-    <ol>
-        <li>Click on the PC to bring up its <em>Physical</em> configuration page</li>
-        <li>Click on <em>Config</em> tab</li>
-        <li>Select the <em>Fast Ethernet 0</em> interface</li>
-        <li>Enter an IP address <strong>192.168.0.2</strong> for the first PC</li>
-        <li>Click into the <em>subnet mask</em> and it should auto populate</li>
-        <li>Close the config sub window</li>
-        <li>Hover mouse over that PC and check the config tooltip. It should show the IP address</li>
-        <li>Repeat for the other PC, but set the IP to <strong>192.168.0.3</strong></li>
-    </ol>
-    <img src="../.gitbook/assets/image (20).png" alt="PC Physical Config">
-    <img src="../.gitbook/assets/image (21).png" alt="Setup Static IP address">
-    <img src="../.gitbook/assets/image (22).png" alt="Check IP address in PC tooltip">
-    
-    <h2>Test the Network Connection using Send PDU</h2>
-    <p>We will now check network connectivity between our two PCs by sending a PDU (Protocol Data Unit). This will send a ping from one machine to another and back.</p>
-    <ol>
-        <li>Select <em>Add Simple PDU</em> from the top toolbar</li>
-        <li>Click on one of the PCs, it should leave an envelope on it</li>
-        <li>Click on the other PC, and it should attempt the ping</li>
-        <li>Check the PDU success in the bottom right panel</li>
-    </ol>
-    <img src="../.gitbook/assets/image (23).png" alt="Select Add Simple PDU">
-    <img src="../.gitbook/assets/image (24).png" alt="Select Source for PDU">
-    <img src="../.gitbook/assets/image (25).png" alt="Check PDU success">
+    <root-nav-bar current='Networks' relative="../"></root-nav-bar>
+    <network-nav-bar current="LAN" relative="../networks/"></network-nav-bar>
+    <main>
+        <h1>Building a Simple LAN</h1>
+        <h2>Place a Switch on the Network</h2>
+        <ul>
+            <li>Click on <em>Network Device</em> category</li>
+            <li>Click on <em>Switch</em> sub category</li>
+            <li>Place a <em>2960</em> switch onto the network</li>
+        </ul>
+        <img src="../.gitbook/assets/image (14).png" alt="Placing a Switch">
+        
+        <h2>Place Two PCs on the Network</h2>
+        <ol>
+            <li>Click on <em>End Device</em> category</li>
+            <li>Click on <em>End Device</em> sub category</li>
+            <li>Place two PCs onto the network</li>
+        </ol>
+        <img src="../.gitbook/assets/image (15).png" alt="Placing Two PCs">
+        
+        <h2>Physically Connect PCs to the Switch</h2>
+        <ol>
+            <li>Select <em>Connections</em> category</li>
+            <li>Select <em>Connections</em> sub category (likely selected by default)</li>
+            <li>Select <em>Copper Straight Through</em> from devices</li>
+            <li>Click on one of the PCs</li>
+            <li>Select <em>Fast Ethernet 0</em></li>
+            <li>Click on the Switch</li>
+            <li>Select one of the <em>Fast Ethernet <x></em> ports</li>
+        </ol>
+        <img src="../.gitbook/assets/image (16).png" alt="Select Copper Straight Through">
+        <img src="../.gitbook/assets/image (17).png" alt="Connect to PC">
+        <img src="../.gitbook/assets/image (18).png" alt="Connect to Switch">
+        <img src="../.gitbook/assets/image (19).png" alt="Physical Connections Made">
+        
+        <h2>Setup Static IP addresses on PCs</h2>
+        <ol>
+            <li>Click on the PC to bring up its <em>Physical</em> configuration page</li>
+            <li>Click on <em>Config</em> tab</li>
+            <li>Select the <em>Fast Ethernet 0</em> interface</li>
+            <li>Enter an IP address <strong>192.168.0.2</strong> for the first PC</li>
+            <li>Click into the <em>subnet mask</em> and it should auto populate</li>
+            <li>Close the config sub window</li>
+            <li>Hover mouse over that PC and check the config tooltip. It should show the IP address</li>
+            <li>Repeat for the other PC, but set the IP to <strong>192.168.0.3</strong></li>
+        </ol>
+        <img src="../.gitbook/assets/image (20).png" alt="PC Physical Config">
+        <img src="../.gitbook/assets/image (21).png" alt="Setup Static IP address">
+        <img src="../.gitbook/assets/image (22).png" alt="Check IP address in PC tooltip">
+        
+        <h2>Test the Network Connection using Send PDU</h2>
+        <p>We will now check network connectivity between our two PCs by sending a PDU (Protocol Data Unit). This will send a ping from one machine to another and back.</p>
+        <ol>
+            <li>Select <em>Add Simple PDU</em> from the top toolbar</li>
+            <li>Click on one of the PCs, it should leave an envelope on it</li>
+            <li>Click on the other PC, and it should attempt the ping</li>
+            <li>Check the PDU success in the bottom right panel</li>
+        </ol>
+        <img src="../.gitbook/assets/image (23).png" alt="Select Add Simple PDU">
+        <img src="../.gitbook/assets/image (24).png" alt="Select Source for PDU">
+        <img src="../.gitbook/assets/image (25).png" alt="Check PDU success">
+    </main>
 </body>
 </html>
