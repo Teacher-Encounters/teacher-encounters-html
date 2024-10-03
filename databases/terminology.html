@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <script type="module" src="../rootNavBar.js"></script>
+    <script type="module" src='../databases/databaseNavBar.js'></script>
+    <title>What are Databases?</title>
+</head>
+<body>
+    <root-nav-bar current='Databases' relative="../"></root-nav-bar>
+    <database-nav-bar current="What?" relative="../databases/"></database-nav-bar>
+    <main>
+        <h1>What are Databases?</h1>
+        <p>
+            It is a structured way of storing data specifically containing a number of tables.
+            Read the below key concepts to understand more.
+        </p>
+        <details>
+            <summary>Entity</summary>
+            An object about which data is to be captured.
+            <p class="eg">
+                For FaceBase we have the entities; Event, Attendees, Person, and Friend Status.
+                Note that entities and tables are related as we store entities in the tables.
+                The easiest way to differentiate them is that entities will have a lot of additional information.
+                This information is not stored in our table, e.g. a person has their own favourite band, film and colour.
+                We don't store this information as we don't need it for FaceBase.
+            </p>
+        </details>
+        <details>
+            <summary>Table</summary>
+            An collection of related data in tabular form.
+            <p class="eg">
+                For FaceBase we currently have the tables; Event, Person, and Friend.
+                Note that entities and tables are related as we store entities in the tables.
+                The easiest way to differentiate them is that entities will have a lot of additional information.
+                This information is not stored in our table, e.g. a person has their own favourite band, film and colour.
+                We don't store this information as we don't need it for FaceBase.
+            </p>
+        </details>
+        <details>
+            <summary>Field aka Attribute aka 'Column'</summary>
+            An set of data values in a table.
+            <div class="eg">
+                In the PEOPLE table we have; ID, Name, Gender, DoB, Is Friend Now?, and Last Updated "Is Friend Now?"
+                Because we are storing data in a table each field can only have a certain set of values.
+                In most relational tables, these following are different types of data:
+                <dl>
+                    <dt>CHARACTER or CHAR</dt>
+                    <dd>
+                        Fixed length strings i.e. text.  We could use it for Gender if we reduce them to one character "M" and "F", or two "CM" and "CF".
+                    </dd>
+
+                    <dt>VARCHAR(n)</dt>
+                    <dd>
+                        Variable length strings i.e. text.  We may specify a maximum length or not.
+                        We would use this for names as they may be as short as "Ed" or as long as "Laurence ... Watkins".
+                        VARCHAR(10) is similar to CHARACTER(10) in that it is a text value with maximum length of 10.
+                        However CHARACTER is more efficient to VARCHAR as the values should be the same length.
+                    </dd>
+
+                    <dt>BOOLEAN</dt>
+                    <dd>A True or False value like "Is Friend Now?"</dd>
+
+                    <dt>INTEGER or INT</dt>
+                    <dd>A whole number like "Age" if we stored this.</dd>
+
+                    <dt>REAL</dt>
+                    <dd>A fractional (i.e. not whole number) like "height" if we stored this.</dd>
+
+                    <dt>DATE</dt>
+                    <dd>A date for example "DoB" (Date of Birth).</dd>
+
+                    <dt>TIME</dt>
+                    <dd>A time like "online" (i.e. time when a person is ONLINE) if we stored this.</dd>
+                </dl>
+                Each database may provide additional data types like LONGTEXT (for text with very large length), 
+                BIGINT (for INT with a very large/low value), or DATETIME (to store both date and time).  Likewise 
+                some datatypes may be aliased or defined differently e.g. REAL is sometimes FLOAT or DOUBLE
+                (DOUBLE is larger so can be more precise), or DECIMAL (if storing something fixed like money).
+                By default all fields may be NULL, so we do not have any Optional(...) datatypes.
+            </div>
+        </details>
+        <details>
+            <summary>Record aka Tuple aka 'Row'</summary>
+            An set of data stored in a table.
+            <p class="eg">
+                For the PEOPLE table a row would represent a person like; 
+                001 (ID), John Doe (Name), Gender (M), 01/01/2000 (DoB), True (Is Friend Now?), 01/01/2024 (Last Updated "Is Friend Now?")
+            </p>
+        </details>
+        <details>
+            <summary>Candidate Key</summary>
+            A unique identifier for a record within a table.
+            May consist of a single field or a combination.
+            <div class="eg">
+                For the PEOPLE table we can have the following candidate keys.
+                <ul>
+                    <li><em>Personal ID</em></li>
+                    <li><em>Name</em></li>
+                    <li><em>Last Updated "Is Friend Now?"</em> AND <em>Is Friend Now?</em> AND <em>DoB</em></li>
+                </ul>
+                Candidate keys may use multiple fields to uniquely identify a record.
+                For this example I am assuming "Name" refers to what you call your friend.
+                So if you had two friends both "John Smith", I'm assuming you store them with different names.
+                Such as "John 'Jo' Smith" and "John 'Big' Smith".  Otherwise "Name" alone would not be enough.
+                Indeed this should remind you about the concept of "identifiable" in GDPR as our table relates to PEOPLE.
+                For example if we stored their mobile number then this could be a candidate key, or
+                if we stored their address then this alongside their DoB could be a candidate key.
+            </div>
+        </details>
+        <details>
+            <summary>Primary Key</summary>
+            The unique identifier for a record within a table.
+            This a Candidate Key, usually the one using the least number of fields.
+            <p class="eg">
+                For our PEOPLE table we've chosen "Personal ID". 
+                Often we will choose the primary key by using an automatically generated ID (e.g. 1 is for the first record).
+                But you can opt for something more meaningful "Big", "Jo" and "John" i.e. the unique name you use to refer to them.
+                This is not a great example of a primary key as it seems logical that you may change how you refer to people.
+                Therefore for following examples I will assume "Personal ID" is a generated unique ID.
+            </p>
+        </details>
+        <details>
+            <summary>Secondary Key</summary>
+            Candidate keys that are not Primary Keys.
+            <p class="eg">
+                In our PEOPLE table we would definitely set "Name" as a secondary key.
+                Identifying secondary keys are useful as we can request the database index them for better performance.
+                It makes sense you may look for a person in your PEOPLE database using their name.
+            </p>
+        </details>
+        <details>
+            <summary>Foreign Key</summary>
+            A link from the current table to another.
+            This maps on to a candidate key from the other table, usually the primary key.
+            <p class="eg">
+                Currently our example database does not have any foreign keys in our PEOPLE table.
+                However we can see the FRIENDS table includes "Name" and we know this should be the same as the "Name" in the PEOPLE table.
+                Therefore "Name" in the PEOPLE table is a secondary key but in the FRIENDS is a foreign key.
+            </p>
+        </details>
+        <details>
+            <summary>Referential Integrity</summary>
+            This means that the data is accurate and consistent between tables and
+            so all references are valid.  As a result every foreign key must relate 
+            to an existing record in another table.
+            <p class="eg">
+                We have a link from FRIENDS table using "Name" on to the PEOPLE table.
+                We should NOT have any record with a "Name" that does not correspond to a record in the PEOPLE table.
+                So if a record in the PEOPLE table has "Name" changed, we must update the "Name" where it appears in the FRIENDS table.
+            </p>
+        </details>
+        <details>
+            <summary>Relationship</summary>
+            This is a connection between one table (Table A) and another (Table B).  
+            We have the following types of relationships:            
+            <dd>
+                <dl>
+                    <dt>One To One (1:1)</dt>
+                    <dd>
+                        Each record in Table A relates to one (and only one) record in Table B.
+                        Likewise each record in Table B may relate to one (and only one) record in Table A.
+                    </dd>
+                    
+                    <dt>One To Many (1:N)</dt>
+                    <dd>
+                        Each record in Table A may relate to zero, one or many records in Table B.
+                        Yet Table B can only relate to one record in Table A.
+                    </dd>
+                    
+                    <dt>Many To Many (N:N)</dt>
+                    <dd>
+                        Like One To Many, each record in Table A may relate to zero, one or many records in Table B.
+                        Unlike One To Many, each record in Table B may relate to zero, one or many records in Table A.
+                    </dd>
+                </dl>
+            </dd>
+            <p class="eg">
+                We have a relationship from FRIENDS table using "Name" on to the PEOPLE table.
+                At the moment it is not unambiguous as to the type of relationship this is.
+                It could be a One To Many, as each record in FRIENDS can only relate to one record in PEOPLE.
+                Whilst one record in PEOPLE may relate to many entries in FRIEND.
+                More likely we mean this relationship to be One To One so that each Friend relates to a record in PEOPLE and vice versa.
+                In contrast we have a Many To Many relationship between "Name" from PEOPLE and "Name" within "Details of Attendees" in EVENTS.
+                Therefore you may have a record in PEOPLE who have attended many or no EVENTS.
+                Whilst you may have EVENTS with no or many PEOPLE as attendees.
+            </p>
+        </details>
+        <details>
+            <summary>Schema</summary>
+            The way the data is organised into tables for our database.
+            <p class="eg">
+                Our draft of our database is a very high level schema.
+                This schema will be improved as we consider indexing and normalisation.
+                Schemas usually also include low level details such as data types and constraints.
+            </p>
+        </details>
+        <details>
+            <summary>Indexing</summary>
+            This is the way to get the unordered tables into an order that will maximise 
+            the efficiency of our queries when searching for data.  Your chosen 
+            Database Management Software (DBMS) handles indexing based on your schema.
+            <p class="eg">
+                All our primary keys will be indexed.
+                Our PEOPLE table we can also index the secondary key "Name".
+                This will allow us to search more efficiently for PEOPLE by their name.
+            </p>
+        </details>
+        <details>
+            <summary>Normalisation</summary>
+            A process of organising data in the database.
+            This is used to reduce duplication and improve data integrity.
+            Please continue to <a href="./norm.html">Normalisation</a> for further details and examples.
+        </details>
+        <details>
+            <summary>Entity Relationship Diagram (ERD)</summary>
+            This is a visual way to represent entities and relationships.
+            They show the critical aspects of a database to ensure the data
+            desired is stored and can be effectively queried.  Some DBMS may
+            autogenerate an ERD of an existing database.  You can create an ERD
+            prior to creating a database.
+            Please continue to <a href="./erd.html">Entity Relationship Diagram</a> for further details and examples.
+        </details>
+    </main>
+</body>
+</html>

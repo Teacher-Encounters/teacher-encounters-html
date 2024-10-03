@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <script type="module" src="../rootNavBar.js"></script>
+    <script type="module" src='../databases/databaseNavBar.js'></script>
+    <title>Entity Relationship Diagrams</title>
+</head>
+<body>
+    <root-nav-bar current='Databases' relative="../"></root-nav-bar>
+    <database-nav-bar current="ERD" relative="../databases/"></database-nav-bar>
+    <main>
+        <h1>Entity Relationship Diagrams</h1>
+        <p>
+            This is a visual way to represent entities and relationships.
+            However there are a number of different variations or notations.
+            We will illustrate two of the most commonly found notations, namely
+            Chen's and Crow's Feet notations.  Sometimes these may be referred
+            respectively to as conceptial and logical ERD.
+        </p>
+        <h2>Chen's Notation</h2>
+        <p>
+            This representation is less focussed on the fact that databases are tables.
+            Instead it focusses purely on the relationships and entities. It can also 
+            include attributes but these may be omitted too.  They key shapes and lines 
+            are illustrated below.  Sometimes you may see additional shapes however 
+            these are rarely required and may be an evolution or variant of Chen's Notation.
+        </p>
+        <img src="../assets/databases/chen_shapes.jpg" alt="Shapes and Lines for Chen's Notation">
+        <div class="eg">
+            Now lets create an ERD using this notation.  
+            To illustrate all possible shapes I used an associative entity for "Attendees".
+            In our original sketch of the data we would have it as a multivalued attribute like "History".
+            Being an associative entity means that "Attendees" is both an entity and a relationship.
+            It defines the Many to Many relationship between EVENTS and PEOPLE but is also an 
+            entity in and of itself. <br/><br/>
+            <img src="../assets/databases/chen_eg.jpg" alt="Example Chen's Notation">
+        </div>
+        <h2>Crow's Foot Notation</h2>
+        <p>
+            This representation is often more closely linked to actual databases.
+            If your DBMS generated any ERD they will often use this or a similar format.
+            Indeed Enhanced ERDs nearly always use this format and differ only in that 
+            all attributes are specified alongside both their data types and any constraints.
+            However for normal Crow's Foot Notation ERD you only need the illustrated below shapes and lines.
+        </p>
+        <img src="../assets/databases/crow_foot_shapes.jpg" alt="Shapes and Lines for Crow's Foot Notation">
+        <div class="eg">
+            Now lets convert the previous ERD into this notation.<br/><br/>
+            <img src="../assets/databases/crow_foot_eg.jpg" alt="Example Chen's Notation"><br/><br/>
+            If you used a DBMS to generate an ERD you may end up with an enhanced ERD (EERD) like below.<br/><br/>
+            <img src="../assets/databases/crow_foot_eg_eerd.jpg" alt="Example Chen's Notation">
+        </div>
+        <div class="info">
+            Optional or not Optional?  In this case I've opted to not use Optional relationships.
+            This is because I have assumed:
+            <ul>
+                <li>You can't store attendees unless there is an associated event and person.</li>
+                <li>This means you don't store all attendees - you only store one's you know about (i.e. in PEOPLE table)</li>
+                <li>Similarly you don't store people who do not appear in your FRIENDS.</li>
+                <li>And also you don't store any freind unless they're already a known person.</li>
+            </ul>
+            You may decide that you want to store all attendees at an event.
+            This would mean you would have an optional relationship between PEOPLE and FRIENDS.
+            As you need to store strangers in your PEOPLE table for all attendees to be recorded.
+            Yet many of these PEOPLE are not in your FRIENDS table either as a friend or as someone unfriended.
+        </div>
+    </main>
+</body>
+</html>

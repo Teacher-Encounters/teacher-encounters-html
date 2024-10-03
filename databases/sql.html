@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <script type="module" src="../rootNavBar.js"></script>
+    <script type="module" src='../databases/databaseNavBar.js'></script>
+    <title>SQL</title>
+</head>
+<body>
+    <root-nav-bar current='Databases' relative="../"></root-nav-bar>
+    <database-nav-bar current="SQL" relative="../databases/"></database-nav-bar>
+    <main>
+        <h1>Structured Query Language (SQL)</h1>
+        <p>
+            Please note SQL can be pronounced S-Q-L.
+            However it is also common to pronounce it as SeQueL.
+            This maybe due to it being easier to pronounce or the fact SQL
+            first started life as Structured English QUEry Language (SEQUEL).
+        </p>
+        <p>
+            This is a standard language for accessing and manipulating databases.
+            But be mindful that each DBMS will likely use it's own version of SQL like MySQL or PostgreSQL.
+            They must provide implement the following standard set of commands.
+            But they may provide additional commands or functionality that you may wish to use.
+            Likewise data types can vary between languages.
+        </p>
+        <p>
+            When answering questions on SQL it is best to focus on the standard outlined here.
+            It can be tempting to add in a useful extra command that you know is in <em>most</em> languages.
+            I'd avoid this but feel free in your coding to use these extras if they help.
+        </p>
+        <div>
+            The critical aspect of SQL is that it is actually two distinct languages:
+            <dl>
+                <dt>Data Definition Language (DDL)</dt>
+                <dd>
+                    This is used to define our database, as well as make any changes to it's schema.
+                    For example you may have a Customers table and decide you want to add "Twitter ID" as a column.
+                    Whereas when you first created the table, you did not see a need for their Twitter IDs.
+                </dd>
+    
+                <dt>Data Manipulation Language (DML)</dt>
+                <dd>
+                    As you may have guessed DML is all of SQL that has nothing to do with modifying schema.  
+                    Instead we use it to perform operations or manipulate the data in our tables.
+                    This is where we run queries to answer a question like "how many customers live in the UK?", or 
+                    "what is the address I am sending this parcel for John Smith?".
+                    Or we may insert a new customer or update their contact details
+                </dd>
+            </dl>
+            It is worth pointing out that it is a common standard for all DDL and DML to be written in uppercase.
+            This is not required however it does make it easier to distinguish the instructions from your settings.
+            Therefore it is often easier to spot any mistakes like if you've created a table missing an attribute.
+            I'd advise you follow this convention including any non-standard SQL commands.
+            For example many variants include a function to convert text to upper case, often called upper.
+            If we used this in our queries we would write UPPER() not upper().
+        </div>
+        <h2>Data Definition Language (DDL)</h2>
+        <div>
+            The key element of this language are:
+            <ul>
+                <li>
+                    <code>CREATE DATABASE dbName;</code> This creates a database called 'dbName'. <br/><br/>
+                </li>
+                <li>
+                    <code>DROP DATABASE dbName;</code> This deletes the database 'dbName'.<br/>
+                </li>
+                <li>
+                    <pre>
+                        CREATE TABLE tableName (
+                            &nbsp&nbsp columnName dataType constraints,
+                            &nbsp&nbsp ID int AUTO_INCREMENT PRIMARY KEY,
+                            &nbsp&nbsp Name varchar(255) DEFAULT 'John Smith'
+                        );
+                    </pre>
+                    This creates a table called tableName with two attributes - ID (int) and Name (varchar).
+                    You must set the columnName and dataType but your attributes may have no constraints.
+                    For simplicity we will use the data types outlined in <a href="./norm.html">Terminology (Field aka Attribute aka 'Column')</a>.
+                    Or alternatively they may use one or more of the following constraints:
+                    <ul>
+                        <li><code>NOT NULL</code> to prevent NULL values</li>
+                        <li><code>UNIQUE</code> to prevent duplicate values from being stored</li>
+                        <li><code>PRIMARY KEY</code> to identify primary key. Implicity enforces <code>NOT NULL</code> and <code>UNIQUE</code>, as well as creating an index.</li>
+                        <li><code>FOREIGN KEY</code> to identify foreign key</li>
+                        <li><code>DEFAULT</code> to set a default value if one is not provided on INSERT</li>
+                        <li><code>AUTO_INCREMENT</code> is similar to DEFAULT but the default value is a unique number for each record starting at 1 and increasing by 1</li>
+                        <li><code>CHECK</code> to set a custom validation so it rejects any invalid data on INSERT or UPDATE</li>
+                    </ul><br/>
+                    It is worth checking each variant to validate how these are used.
+                    But for 'standard' SQL you can put them in "constraints".  
+                    You do not need to join these with an AND or similar instead just list them like <code>NOT NULL UNIQUE DEFAULT 'abc'</code>.
+                    Please be aware that <code>FOREIGN KEY</code> must specify the table it links to and it's primary key like so 
+                    <code>FOREIGN KEY REFERENCES tableName2(primaryKey)</code>.
+                    For <code>CHECK</code> you also need to specify the actual constraint e.g. <code>Age int CHECK (Age>=0)</code>.
+                    If you need a composite <code>PRIMARY KEY</code> then you add the following at the end of the definition 
+                    <code>CONSTRAINT PK_Name PRIMARY KEY (attribute1,attribute2)</code>.
+                    This means the primary key is a composite of "attribute1" and "attribute2".
+                    The "PK_Name" can be any unique name for primary key index - usually you prefix it with PK to indicate Primary Key.<br/><br/>
+                </li>
+                <li>
+                    <code>DROP TABLE tableName;</code> This deletes table 'tableName'.<br/><br/>
+                </li>
+                <li>
+                    <code>TRUNCATE TABLE tableName;</code>  This deletes all the data in table 'tableName' but the actual table still exists. <br/>
+                </li>
+                <li>
+                    <pre>
+                        CREATE INDEX indx_name
+                        ON tableName (ColumnName);
+                    </pre>
+                    You can create an index over multiple columns but replacing "ColumnName" with comma separated list e.g. "FirstName, LastName".
+                    Please note INDEXes are not visible to you.  These are used to improve performance on your queries.
+                    You may think, "If they're that awesome then why no index EVERYTHING?".  DO NOT DO THIS!
+                    Indexes have a cost, not just in storage but in performance when inserting or updating data.
+                    Any affected index needs to be updated to include the new or changed value.
+                    So adding them to all your columns would be very bad for your performance.
+                    Instead we add them to any column(s) that are expected to be used for search.
+                    A common example is a Name.  Usually this is not a Primary Key as names may change.
+                    However we humans tend to remember names over IDs so making a Name quicker to lookup would be a good idea.<br/><br/>
+                </li>
+                <li>
+                    We can also alter a table in a few different ways:
+                    <pre>
+                        ALTER TABLE tableName
+                        ADD Email varchar(255);
+                    </pre>
+                    <pre>
+                        ALTER TABLE tableName
+                        DROP COLUMN Name;
+                    </pre>
+                    <pre>
+                        ALTER TABLE tableName
+                        RENAME COLUMN ID to TwitterHandle;
+                    </pre>
+                    Please note that some SQL variants also provide a way to modify a column's type and constraints e.g. changing ID to varchar.
+                    For changing a column's type you can also change or add constraints.  
+                    The same is true for ADDing columns - you may also include constraints.
+                    Please see <code>CREATE TABLE</code> for more information on constraints.<br/>
+                </li>
+            </ul>
+            <h2>Data Manipulation Language (DML)</h2>
+            <div>
+                The key element of this language is the <code>SELECT</code> statement.
+                It follows the form:
+                <pre>
+                    SELECT t.columnName1, t.columnName2 AS c, tt.aColumnName AS a
+                    FROM tableName AS t
+                    INNER JOIN tableName2 AS tt ON t.foreignKey = tt.primaryKey
+                    WHERE c = 'abc'
+                    &nbsp&nbsp OR c = 'def'
+                    GROUP BY a
+                    ORDER BY columnName1, c DESC;
+                </pre>
+                Please note that this form does not cover 100% of use cases.
+                It does however cover all the key SQL commands on your A Level syllabus. 
+                Time to break the statement down (and the order is important too):
+                <ol>
+                    <li>
+                        We always have a <code>SELECT</code> line.
+                        You can choose to select all columns by using <code>SELECT *</code> rather than listing all columns.
+                        If you have an <code>JOIN</code> you must prefix all columns with the associated tableName.
+                        This ensures we get the correct data.  
+                        If you don't have a join then you can omit the table name as a prefix, e.g. <code>columnName1</code>.
+                        You can also uses <code>AS</code> to create an alias for a column name.
+                        This is handy when using that later in the query.
+                        It can also be used to rename the results column.
+                        You can also apply aggregate functions, like:
+                        <ul>
+                            <li>
+                                <code>SUM</code> to get the total sum of this attribute providing it is numeric.
+                            </li>
+                            <li>
+                                <code>COUNT</code> to get the number of rows that match this query.
+                            </li>
+                            <li>
+                                <code>AVG</code> to get the average of this attribute providing it is numeric.
+                            </li>
+                            <li>
+                                <code>MIN</code> to get the smallest value of this attribute.
+                            </li>
+                            <li>
+                                <code>MAX</code> to get the largest value of this attribute.
+                            </li>
+                        </ul><br/>
+                    </li>
+                    <li>
+                        We always have a <code>FROM</code> line to identify the table we are querying.
+                        Like the attributes this may also use <code>AS</code> to define an alias.<br/><br/>
+                    </li>
+                    <li>
+                        We then have any <code>JOIN</code> statements.
+                        This is not needed if you only need to use one table for your query.
+                        We then tell the query the table to join to and then <code>ON</code> the attributes.
+                        In a normalised database, usually this join is between a specific foreign key and the other table's primary key.
+                        It is worth noting that you can join with more than two tables.
+                        Additional this is the standard join which we call <code>INNER JOIN</code>.
+                        This does mean there are other types of joins but these are not covered; 
+                        <code>LEFT OUTER JOIN</code>, <code>RIGHT OUTER JOIN</code>,<code>FULL OUTER JOIN</code><br/><br/>
+                    </li>
+                    <li>
+                        The next part is <code>WHERE</code> which is used to limit or filter the results.
+                        This is not required unless you want to limit or filter your results.
+                        You may use multiple conditions joining with <code>AND</code>, and <code>OR</code>.
+                        If you use both <code>AND</code> and <code>OR</code> then use brackets <code>(  )</code> to ensure the correct interpretation.
+                        Additionally you can negate a condition by prefixing it with <code>NOT</code>, for example <code>NOT IN ('A', 'B', 'C')</code>.
+                        As for conditions you can apply to the attributes, you can use the following:
+                        <ul>
+                            <li>
+                                Comparison operators <code>=, &gt, &lt, &lt=, &gt=, , &lt&gt</code>.
+                                Note that the last operator is used for not equals (rather than !=).
+                            </li>
+                            <li>
+                                <code>LIKE</code> to match using wildcards.
+                                For example <code>LIKE 'a%'</code> would match all values starting with an 'a'.
+                                For example <code>LIKE '_M'</code> would match all values that are two letters long and end in a 'M'.
+                            </li>
+                            <li>
+                                <code>IN</code> to match a set of values.
+                                This is a shorter way to check equality against a set of values.
+                                For example <code>columnName IN ('A', 'B', 'C')</code> is that same check as 
+                                <code>columnName = 'A' OR columnName = 'B' OR columnName = 'C'</code>.
+                            </li>
+                            <li>
+                                <code>BETWEEN</code> to match a given range.
+                                Therefore <code>columnName BETWEEN 10 AND 15</code> is a shortened version of
+                                <code>columnName &gt= 10 AND columnName &lt= 15</code>
+                            </li>
+                            <li>
+                                <code>IS NULL</code> to match an attribute that has not been set and so is <code>NULL</code>.
+                            </li>
+                        </ul><br/>
+                    </li>
+                    <li>
+                        Then we have <code>GROUP BY</code> which can take a single column or mulitple columns.
+                        This is only needed if we want to collate our results into groups.
+                        This is therefore often used alongside aggregate functions, 
+                        for example to <code>COUNT(*)</code> the number of matches in the group.<br/><br/>
+                    </li>
+                    <li>
+                        And finally we have <code>ORDER BY</code> which can take a single column or multiple columns.
+                        This orders the results by the column(s).
+                        When multiple columns are specified we order rows by the first column and any rows with the 
+                        same value in this column are then ordered by the next column and so on.
+                        As a result if you ordered by a column with a <code>UNIQUE</code> constraint like a <code>PRIMARY KEY</code>.
+                        Then putting an additional column after this would be pointless as the column will have no duplicate values for the next column to sort.
+                        The example below as <code>DESC</code> to indicate descending order.
+                        For ascending order you can omit this as it defaults to ascending or put <code>ASC</code> instead.<br/>
+                    </li>
+                </ol>
+                The remaining elements of DML are the following:
+                <ul>
+                    <li>
+                        <pre>
+                            INSERT INTO tableName (attribute1, attribute2, attribute3)
+                            VALUES (1, 2, 3),
+                            VALUES (4, 5, 6);
+                        </pre>
+                        This inserts the specified values at the given attributes for the table identified.
+                        The above example inserts two rows but it can insert many more or just insert one row.
+                        If you are inserting all attributes you can omit the list and so line 1 becomes <code>INSERT INTO tableName</code>.
+                        If you only insert a subset of values ensure the remaining attributes have a <code>DEFAULT</code> or maybe <code>NULL</code>.
+                        This is because any other attribute will be set to <code>NULL</code> if no default value or the provided default value.
+                        Therefore is <code>attribute4</code> exists and must be <code>NOT NULL</code> then the <code>INSERT</code> will fail.
+                        Likewise it will fail if any constraint is not met.
+                        This notably includes ensuring Referential Integrity - i.e. all foreign keys link to a valid record.
+                    </li>
+                    <li>
+                        <pre>
+                            UPDATE tableName
+                            SET attribute1 = 'a', attribute2 = 'b', attribute3 = 'c'
+                            WHERE primaryKey = 1;
+                        </pre>
+                        This updates a specific table by setting the given attributes to the values provided.
+                        You may update one or more attributes and do not need to update all attributes in the table.
+                        Like the <code>SELECT</code> command we have a <command>WHERE</command> subclause.
+                        It behaves exactly the same way however now it is updating one or more records.
+                        Update may fail if your update fails any existing constraint on your table similar to when <code>INSERT</code> fails.
+                        <p class="danger">
+                            Yes you can run an update without a <code>WHERE</code> being provided.
+                            However this means you will update all records.
+                            Odds are you don't want that.
+                        </p>
+                    </li>
+                    <li>
+                        <pre>
+                            DELETE tableName
+                            WHERE primaryKey = 1;
+                        </pre>
+                        Like <code>SELECT</code> and <code>UPDATE</code> we have a where clause.
+                        In this case the matching records are deleted from our table.
+                        Please note that <code>DELETE tableName</code> is a valid command.
+                        This would be the same as DDL's <code>TRUNCATE TABLE tableName;</code> and would drop all data in the table.
+                        Please be aware <code>DELETE</code> can also fail.
+                        If you tried to delete a customer that had an associated order then it would fail.
+                        Otherwise you would have an order that relates no customer.
+                        Delete the orders first then the customer.
+                    </li>
+                </ul>
+                <div class="warn">
+                    Be aware your database may not fail <code>DELETE</code> or <code>UPDATE</code> when it comes to referential integrity.
+                    In the previous example we had a customer being deleted before their orders.
+                    Some variants and DBMS may provide additional options, often referred to as:
+                    <ul>
+                        <li>
+                            <code>ON DELETE CASCADE</code> and <code>ON UPDATE CASCADE</code><br/>
+                            So that on deletion of a customer, all associated records like orders, cards, etc are also removed. 
+                            Similarly if we update a customer ID it will ensure all foreign keys using the old customer ID are updated also.
+                        </li>
+                        <li>
+                            <code>ON DELETE SET NULL</code> and <code>ON UPDATE SET NULL</code><br/>
+                            When you delete a customer or change their ID then all associated records like orders, cards, etc are set to <code>NULL</code>.
+                            If the attribute cannot be set to <code>NULL</code> then an error will be raised.
+                        </li>
+                        <li>
+                            <code>ON DELETE SET DEFAULT</code> and <code>ON UPDATE SET DEFAULT</code><br/>
+                            When you delete a customer or change their ID then all associated records like orders, cards, etc are set to the <code>DEFAULT</code>.
+                            If the attribute does not have a <code>DEFAULT</code> set then an error will be raised.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="eg">
+                Lets start with our DDL.
+                It is important to ensure you create your tables in the correct order.
+                For example we cannot create Attendees table unless both People and Events tables exist.
+                We also assume the database we created is the only one present and so will be the default database used.
+                If this was not the case then our tables would need to be prefixed with our database e.g. <code>FaceBase.Events</code>.<br/><br/>
+                <pre>
+                    CREATE DATABASE FaceBase
+                    CREATE TABLE Events (
+                        &nbsp&nbsp&nbsp Id int NOT NULL AUTO_INCREMENT,
+                        &nbsp&nbsp&nbsp Name varchar(255) NOT NULL CHECK (LEN(Name) >= 10),
+                        &nbsp&nbsp&nbsp StartDate date NOT NULL,
+                        &nbsp&nbsp&nbsp Location varchar(50)
+                    );
+                    CREATE INDEX indx_event_name
+                    ON Events (Name);
+                    CREATE TABLE Countries (
+                        &nbsp&nbsp&nbsp Id char(2) NOT NULL,
+                        &nbsp&nbsp&nbsp Name varchar(255) NOT NULL
+                    );
+                    CREATE TABLE Counties (
+                        &nbsp&nbsp&nbsp Id int NOT NULL AUTO_INCREMENT,
+                        &nbsp&nbsp&nbsp Name varchar(255) NOT NULL,
+                        &nbsp&nbsp&nbsp Country char(2) NOT NULL FOREIGN KEY REFERENCES Countries(Id)
+                    );
+                    CREATE TABLE Addresses (
+                        &nbsp&nbsp&nbsp Id int NOT NULL AUTO_INCREMENT,
+                        &nbsp&nbsp&nbsp HouseNumName varchar(255) NOT NULL,
+                        &nbsp&nbsp&nbsp FirstLine varchar(255) NOT NULL,
+                        &nbsp&nbsp&nbsp County int NOT NULL FOREIGN KEY REFERENCES Counties(Id),
+                        &nbsp&nbsp&nbsp PostCode varchar(255) NOT NULL
+                    );
+                    CREATE TABLE People (
+                        &nbsp&nbsp&nbsp Id int NOT NULL AUTO_INCREMENT,
+                        &nbsp&nbsp&nbsp Name varchar(255) NOT NULL CHECK (LEN(Name) >= 10),
+                        &nbsp&nbsp&nbsp DoB date NOT NULL,
+                        &nbsp&nbsp&nbsp Gender char(2),
+                        &nbsp&nbsp&nbsp HomeAddress int NOT NULL FOREIGN KEY REFERENCES Addresses(Id)
+                    );
+                    CREATE INDEX indx_person_name
+                    ON People (Name);
+                    CREATE TABLE Attendees (
+                        &nbsp&nbsp&nbsp Event int NOT NULL FOREIGN KEY REFERENCES Events (Id),
+                        &nbsp&nbsp&nbsp Person int NOT NULL FOREIGN KEY REFERENCES People (Id),
+                        &nbsp&nbsp&nbsp CONSTRAINT PK_Attendees PRIMARY KEY (Event,Person)
+                    );
+                    CREATE TABLE Updates (
+                        &nbsp&nbsp&nbsp Id int NOT NULL AUTO_INCREMENT,
+                        &nbsp&nbsp&nbsp Person int NOT NULL FOREIGN KEY REFERENCES People (Id),
+                        &nbsp&nbsp&nbsp UpdatedAt date NOT NULL,
+                        &nbsp&nbsp&nbsp IsFriend boolean NOT NULL,
+                        &nbsp&nbsp&nbsp ReasonForUpdate varchar(255) NOT NULL CHECK (LEN(Name) >= 10)
+                    );
+                </pre>
+                Here are a few example queries using DML.
+                Please note I've omitted the many, many <code>INSERT</code>s for brevity.
+                I will include the full SQL for FaceBase when we look at creating it.
+                This is because I will choose to use a specific database and may need to modify the SQL to fit the variant.
+                <ul>
+                    <li>
+                        This will get all people in FaceBase, current or former friend, that have a gender of Male (CM).
+                        <pre>
+                            SELECT *
+                            FROM People
+                            WHERE Gender = 'CM'
+                        </pre>
+                    </li>
+                    <li>
+                        This will get, for each county, the number of people in the county and the name of the county.
+                        The results will be in descending order of number of people in the county.
+                        <pre>
+                            SELECT a.name As TheCounty, COUNT(p.Id) As NumPeople
+                            FROM ((People As p
+                            INNER JOIN Addresses AS a ON p.HomeAddress = a.Id)
+                            INNER JOIN Counties AS c ON a.County = c.Id)
+                            GROUP BY c.Id
+                            ORDER BY NumPeople DESC
+                        </pre>
+                    </li>
+                    <li>
+                        This will get your current friend list.
+                        Sadly it is very complex and relies upon sub-queries. 
+                        These sub-queries are used where we once had tableNames specified.
+                        Unfortunately this could translate to slower overvall performance too.
+                        To break this down it:
+                        <ol>
+                            <li>
+                                Runs <code>j1</code> resulting in a table with the attributes Id, Person and LastUpdate.
+                                This groups all the updates by the associated person and gets the last time it was updated.
+                                But now we are missing information, namely was the last update to add friend or unfriend?
+                            </li>
+                            <li>
+                                So we run <code>j2</code> that gets the full information on the last updates per person.
+                            </li>
+                            <li>
+                                Finally we can then run the query that filters out the people last unfreinded and returns 
+                                us all the key information about that person.
+                            </li>
+                        </ol>
+                        <pre>
+                            SELECT p.*, j2.UpdatedAt, j2.ReasonForUpdate
+                            FROM People as p
+                            INNER JOIN (
+                                &nbsp&nbsp SELECT u.*
+                                &nbsp&nbsp FROM Updates as u
+                                &nbsp&nbsp INNER JOIN (
+                                &nbsp&nbsp   &nbsp&nbsp SELECT u.Person as Person, MAX(u.UpdatedAt) as LastUpdate
+                                &nbsp&nbsp   &nbsp&nbsp FROM Updates As u
+                                &nbsp&nbsp   &nbsp&nbsp GROUP BY u.Person
+                                &nbsp&nbsp ) As j1 ON j1.Person = u.Person AND j1.LastUpdate = u.UpdatedAt
+                                &nbsp&nbsp WHERE u.IsFriend = true
+                            ) AS j2 ON j2.Person = p.Id
+                        </pre>
+                        <div>
+                            <p>
+                                You are probably wondering where we went wrong.
+                                It can't be that complex to get our friend list?  Something is not right!
+                                This illustrates one good point about databases, sometimes our 3NF database 
+                                can still feel 'wrong' or inefficient.
+                            </p>
+                            <p>
+                                It would be tempting to revisit our previous decisions.
+                                When we removed "Is Friend Now?" and "Last updated Is Friend Now?" from 
+                                the People table.  It was because we had a Friends table and these attributes 
+                                are Friends not People attributes.  However we found the Friends table redundant.
+                                We could have kept the Friends table and so the query would be:
+                            </p>
+                            <pre>
+                                SELECT p.*, f.LastUpdatedIfn As LastAdded
+                                FROM Friends AS f
+                                INNER JOIN People ON p.Id = f.Person
+                                WHERE f.IsFriendNow = true
+                            </pre>
+                            <p>
+                                However this means create a new table and storing duplicate data.
+                                There is a risk the data is not kept updated. 
+                            </p>
+                            <p>
+                                Alternatively we add a link from People to their latest update.
+                                Our PEOPLE Table would then have <code>LastUpdate int FOREIGN KEY REFERENCES Updates(Id)</code>.
+                                When we first create a record for a person <code>LastUpdate</code> would be <code>NULL</code> and 
+                                likewise when we delete the person we would need to return it to <code>NULL</code>.
+                                Otherwise we could not delete a person due to the updates and deleting the updates would delete 
+                                all but the last update as the person links to it!
+                            </p>
+                            <pre>
+                                SELECT p.*, j2.UpdatedAt, j2.ReasonForUpdate
+                                FROM (People as p
+                                INNER JOIN Updates AS u ON u.Id = p.LastUpdate)
+                                WHERE u.IsFriend = true
+                            </pre>
+                            <p>
+                                This avoids extra data but then requires a circular link between a person and their last update.
+                                So you need to be careful when deleting data.
+                            </p>
+                            <p>
+                                Or finally we may concede - "Do we actually care about our friend history?".
+                                When looking at entities and how you translate them into database designs you 
+                                may miss interesting attributes and may includes ones that you don't need or want.
+                                Instead it may be better to remove Updates table.
+                                Then we add <code>lastFriended date</code> and <code>lastUnfriended date</code> to the People table.
+                                This means we can work out if someone is a friend and how long that last change to friend status was.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="warn">
+                Be careful of SQL INJECTION.
+                Like any form of injection attack it starts by taking user input and not checking it's safe.
+                Therefore we could have the following code:
+                <pre>
+                    query = "SELECT * FROM Customers WHERE CustomerID = "
+                    inp = input("What was your ID?")
+                    print(SQL.execute(query + inp))
+                </pre>
+                If a malicious actor comes along they could use the input like:
+                <ul>
+                    <li>
+                        <pre>1 OR 1=1</pre>
+                        This means they would see all customers as 1=1 is ALWAYS TRUE making the WHERE condition useless.
+                    </li>
+                    <li>
+                        <pre>1; DROP TABLE Customers</pre>
+                        The semi-colon means your query is now actually two SQL commands.
+                        One fetches the data for Customer 1 and the other deletes your entire Customer table.
+                    </li>
+                </ul>
+                Each programming language does include protection from these issues.
+                As long as you remember NOT to use raw SQL.  For example (in pseudocode):
+                <pre>
+                    query = "SELECT * FROM Customers WHERE CustomerID = ?"
+                    inp = input("What was your ID?")
+                    cmd = new SqlCommand(query)
+                    cmd.add_parameter("?", inp)
+                    print(cmd.execute())
+                </pre>
+                These methods ensure the input is correctly escaped to prevent SQL Injection.
+            </div>
+        </div>
+    </main>
+</body>
+</html>
