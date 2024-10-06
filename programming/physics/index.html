@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../css/style.css" rel="stylesheet">
+		<script type="module" src="../rootNavBar.js"></script>
+		<script type="module" src='../programming/programmingNavBar.js'></script>
+		<title>Physics</title>
+	</head>
+	<body>
+		<root-nav-bar current='Programming' relative="../"></root-nav-bar>
+		<programming-nav-bar current="Physics" relative="../programming/"></programming-nav-bar>
+		<main>
+			<h1>Physics Simulation</h1>
+
+			<p>
+			In this two-part activity, you will be doing the following.
+			</p>
+			<ul>
+				<li>Writing a simple simulation to demonstrate how acceleration, velocity and
+					position relate to each other.</li>
+				<li>Modifying an existing program</li>
+			</ul>
+			<p>Each step will show you the code you need to add, and the expected output.</p>
+
+			<h2>Step 1 - Access the Development Environment</h2>
+			<a href="http://p5js.org/">p5.js</a>
+			<ul>
+				<li>Press the play button</li>
+				<li>You should see a grey square, a background of 200 where greyscale goes from 0 -> 255.</li>
+			</ul>
+
+			<h2>Step 2 - Draw a Circle</h2>
+			<p>
+			<p>Add the following line to your code:</p>
+			<ul>
+				<li>Line 8 – Draws a circle during each frame of animation.</li>
+				<li>Then press Play to see your circle.</li>
+			</ul>
+
+			<h2>Step 3 - Create a Vector for Position</h2>
+			<p>Add the following lines:</p>
+			<ul>
+				<li>Line 1 – Declare a variable.</li>
+				<li>Line 7 – Initialise the variable by creating a vector.</li>
+				<li>Line 13 – Change the existing circle line to use your vector.</li>
+			</ul>
+			<p>Press play and the circle should still appear.</p>
+			<p>Try modifying the values in line 7 to check that the circle appears in a different place.</p>
+
+			<h2>Step 4 - Create a Vector for Velocity</h2>
+			<p>Add the following lines:</p>
+			<ul>
+				<li>Line 2 – Declare a variable to store the velocity.</li>
+				<li>Line 9 – Initialise the velocity with a vector.</li>
+				<li>Line 17 – Use the velocity to modify the position during each frame of animation.</li>
+			</ul>
+			<p>When you press Play now, the circle should move. It will simply keep moving in one direction until it’s off the screen. It should move at a consistent speed.</p>
+			<p>Try changing the values of velocity to make it move slower or faster.</p>
+
+			<h2>Step 5 - Create a Vector for Acceleration</h2>
+			<p>Add the following lines:</p>
+			<ul>
+				<li>Line 3 – Declare a variable to represent acceleration.</li>
+				<li>Line 11 – Initialise the variable by creating a vector.</li>
+				<li>Line 20 – Use the acceleration to modify the velocity.</li>
+			</ul>
+			<p>Note that I have used very small values for the acceleration, if you use larger values the circle will probably shoot of the screen too quickly to observe.</p>
+			<p>Note that the speed of the circle changes as it moves off screen.
+			</p>
+
+			<h2>Step 6 - Calculate acceleration towards the mouse</h2>
+			<p>Add the following lines:</p>
+			<ul>
+				<li>Line 23 – Create a vector to represent mouse position.</li>
+				<li>Line 24 - Recalculate the acceleration by doing vector subtraction between the
+					mouse position and the circle’s position.</li>
+				<li>Line 25 – Scale the acceleration to a sensible value by forcing its size.</li>
+			</ul>
+			<p>Press play and then move the mouse into the grey box. You should find the circle attempts to move towards the mouse. Likely it will ‘orbit’ the mouse.</p>
+			<p>It may be difficult to keep the circle on the screen, we will fix that in the next step.</p>
+
+			<h2>Step 7 - Simulate Friction</h2>
+			<p>Add the following lines:</p>
+			<ul>
+				<li>Line 28 – Multiply the velocity by a factor during each animation frame. Make that
+					factor less than 1 and that will create a ‘fake’ version of friction.</li>
+			</ul>
+			<p>Press play and move your mouse around; you should find it much easier to keep the circle on the screen.</p>
+			<p>The velocity is being artificially reduced each frame, which simulates a force acting in the opposite direction to the movement of the ball.</p>
+		</main>
+
+	</body>
+</html>
