@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/style.css" rel="stylesheet">
+        <script type="module" src="../rootNavBar.js"></script>
+        <script type="module" src='../programming/programmingNavBar.js'></script>
+        <title>Simple Harmonic Motion</title>
+    </head>
+    <body>
+        <root-nav-bar current='Programming' relative="../"></root-nav-bar>
+        <programming-nav-bar current="Simple Harmonic Motion" relative="../programming/"></programming-nav-bar>
+        <main>
+            <h1>Simple Harmonic Motion</h1>
+            <p>For this, open a new tab and start a new sketch. We will be building up a sketch that generates a Sine wave by using a rotating vector. This will make use of Trigonometry, which you may have encountered in maths.</p>
+            <h2>Step 1 - Create Outline Circle</h2>
+            <p>Add the following lines:</p>
+            <ul>
+                <li>Line 1: Declare a radius for the large circle</li>
+                <li>Line 11: Translate all drawing to be relative to the middle of the screen</li>
+                <li>Lines 14-17: Setup the drawing parameters and draw our circle</li>
+            </ul>
+            <p>Press play and you should see your circle.</p>
+
+            
+            <h2>Step 2 - Create Rotating Point</h2>
+            <p>Add the following constant to the top of the code:</p>
+            <ul>
+                <li>Line 2 – Declare a frequency for the rotation.</li>
+            </ul>
+            
+            Add the following code to the draw function to draw the rotating points. 
+            <ul>
+                <li>Lines 21 – 26: Calculate the point using trigonometry.</li>
+            </ul>
+
+            <p>Press ‘Play’ and you should see a rotating red point, and a static one in the middle.</p>
+
+            <h2>Step 3 - Generate a Sine Wave</h2>
+            <h2>Add the following line to the top of your code: </h2>
+            <ul>
+                <li>Line 3 – Declare a list of dots</li>
+            </ul>
+            <p>Add the following lines to the end of the ‘draw’ function:</p>
+            <ul>
+                <li>Lines 33-35: Every 5th frame you will add a dot at the current ‘y’ position.</li>
+                <li>Line 37: Draw each dot.</li>
+                <li>Line 38: Move each dot along the x-axis.</li>
+                <li>Line 39: Remove any dots that have gone beyond the screen.</li>
+            </ul>
+            <p>Press ‘Play’ and you should see a sine wave being generated:</p>
+        </main>
+    </body>
+
+</html>

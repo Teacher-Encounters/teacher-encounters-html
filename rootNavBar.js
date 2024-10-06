@@ -10,6 +10,14 @@ const ROOT_NAV_ITEMS = [
     href: "networks/index.html",
   },
   {
+    title: "Programming",
+    href: "programming/index.html",
+  },
+  {
+    title: "Databases",
+    href: "databases/index.html",
+  },
+  {
     title: "A Level",
     href: "a-level/index.html",
   },
