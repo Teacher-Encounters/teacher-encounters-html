@@ -2,13 +2,16 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 body > main {
   padding-left: 2em;
   padding-right: 2em;
 }
+
 img {
   height: 50vh;
 }
+
 table, td, th {  
   border: 1px solid;
 }
@@ -19,6 +22,102 @@ table {
   
 th, td {
   padding: 1em;
+}
+
+.warn {
+  background-color: yellow;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+}
+
+.warn::before {
+  content: "WARNING";
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 0;
+}
+
+.danger {
+  color: white;
+  background-color: #c00;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+}
+
+.danger::before {
+  content: "DANGER";
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 0;
+}
+
+.info {
+  background-color: #dff;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+}
+
+.info::before {
+  content: "INFO";
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 0;
+}
+
+.eg {
+  background-color: rgb(0, 196, 0);
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+}
+
+.eg::before {
+  content: "EXAMPLE";
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 0;
+}
+
+dt {
+  text-decoration: underline;
+  padding-bottom: 0.5em;
+}
+
+dd {
+  padding-bottom: 1em;
+}
+
+details {
+  border: 1px solid #aaa;
+  border-radius: 1em;
+  padding: 0.5em 0.5em 0;
+  margin: 0.5em 0;
+}
+
+summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+details[open] {
+  padding: 0.5em;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+
+pre {
+  white-space: pre-line
 }
 /* May look odd on smaller screens but shows nav bar */
 embed {
