@@ -7,6 +7,8 @@
 		<link href="../../css/style.css" rel="stylesheet">
 		<script type="module" src="../../rootNavBar.js"></script>
 		<script type="module" src='../../programming/programmingNavBar.js'></script>
+		<script src='../../lib/p5.min.js'></script>
+		<script defer src='physics/index.js'></script>
 		<title>Physics</title>
 	</head>
 	<body>
@@ -39,6 +41,19 @@
 				<li>Line 8 – Draws a circle during each frame of animation.</li>
 				<li>Then press Play to see your circle.</li>
 			</ul>
+			<div class='p5-code'>
+				<pre>
+					<code>function setup() {</code>
+					<code>	createCanvas(400, 400);</code>
+					<code>}</code>
+
+					<code>function draw() {</code>
+					<code>	background(220);</code>
+					<code>	circle(200, 200, 50);</code>
+					<code>}</code>
+				</pre>
+				<div id='p5-circle'></div>
+			</div>
 
 			<h2>Step 3 - Create a Vector for Position</h2>
 			<p>Add the following lines:</p>

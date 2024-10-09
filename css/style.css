@@ -24,6 +24,11 @@ th, td {
   padding: 1em;
 }
 
+.p5-code {
+  display: flex;
+  flex-direction: row;
+}
+
 .warn {
   background-color: yellow;
   margin: 1em 0;
@@ -117,10 +122,34 @@ details[open] summary {
 }
 
 pre {
-  white-space: pre-line
+  white-space: pre-line;
 }
+
+.p5-code > pre {
+  white-space: pre-line;
+  counter-reset: line;
+  padding: 1rem;
+  margin: 0;
+  border: solid thin black;
+  border-collapse: collapse;
+  tab-size: 16;
+}
+
+.p5-code code {
+  tab-size: 16;
+  counter-increment: line;
+}
+
+.p5-code code:before {
+  content: counter(line) ': ';
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 /* May look odd on smaller screens but shows nav bar */
 embed {
   height: 90vh;
   width: 100vw;
 }
+
+
