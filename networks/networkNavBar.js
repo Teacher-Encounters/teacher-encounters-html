@@ -1,4 +1,4 @@
-import { NavBar } from "../common/navBar.js";
+import NavBar from "../common/navBar.js";
 
 const NETWORK_NAV_ITEMS = [
   {

@@ -1,6 +1,6 @@
 import sheet from "./navBar.css" with { type: "css" };
 
-export class NavBar extends HTMLElement {
+export default class NavBar extends HTMLElement {
   constructor(navItems, isRoot = false) {
     super();
     this.navItems = navItems;

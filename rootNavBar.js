@@ -1,4 +1,4 @@
-import { NavBar } from "./common/navBar.js";
+import NavBar from "./common/navBar.js";
 
 const ROOT_NAV_ITEMS = [
   {
