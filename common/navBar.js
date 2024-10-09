@@ -1,4 +1,47 @@
-import sheet from "./navBar.css" with { type: "css" };
+//import sheet from "./navBar.css" with { type: "css" };
+const sheet = new CSSStyleSheet();
+
+sheet.replaceSync(`
+ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  background-color: #666;
+  padding: 0.5em 1em;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+ul.rootNav {
+  background-color: #333;
+}
+
+@media screen and (max-width: 480px) {
+  ul {
+    flex-direction: column;
+  }
+}
+
+li.currentNav {
+  text-decoration: underline;
+  text-decoration-color: black;
+  background-color: white;
+  color: black;
+}
+
+li a {
+  color: inherit;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li:not(.currentNav) a:hover {
+  background-color: #000;
+}
+`)
 
 export default class NavBar extends HTMLElement {
   constructor(navItems, isRoot = false) {
