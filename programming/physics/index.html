@@ -5,10 +5,10 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="../../css/style.css" rel="stylesheet">
+		<script type="module" src="../../common/p5Sketch.js"></script>
 		<script type="module" src="../../rootNavBar.js"></script>
 		<script type="module" src='../../programming/programmingNavBar.js'></script>
 		<script src='../../lib/p5.min.js'></script>
-		<script defer src='physics/index.js'></script>
 		<title>Physics</title>
 	</head>
 	<body>
@@ -38,20 +38,11 @@
 			<p>
 			<p>Add the following line to your code:</p>
 			<ul>
-				<li>Line 8 – Draws a circle during each frame of animation.</li>
+				<li>Line 7 – Draws a circle during each frame of animation.</li>
 				<li>Then press Play to see your circle.</li>
 			</ul>
 			<div class='p5-code'>
-				<pre>
-					<code>function setup() {</code>
-					<code>	createCanvas(400, 400);</code>
-					<code>}</code>
-
-					<code>function draw() {</code>
-					<code>	background(220);</code>
-					<code>	circle(200, 200, 50);</code>
-					<code>}</code>
-				</pre>
+				<p5-sketch src='./physics/draw-circle.js' containerId='p5-circle'></p5-sketch>
 				<div id='p5-circle'></div>
 			</div>
 
@@ -62,6 +53,10 @@
 				<li>Line 7 – Initialise the variable by creating a vector.</li>
 				<li>Line 13 – Change the existing circle line to use your vector.</li>
 			</ul>
+			<div class='p5-code'>
+				<p5-sketch src='./physics/position-vector.js' containerId='p5-pos-vector'></p5-sketch>
+				<div id='p5-pos-vector'></div>
+			</div>
 			<p>Press play and the circle should still appear.</p>
 			<p>Try modifying the values in line 7 to check that the circle appears in a different place.</p>
 
