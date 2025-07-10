@@ -17,6 +17,10 @@ const PROGRAMMING_NAV_ITEMS = [
     title: "Modify and Play",
     href: "modify-and-play/index.html",
   },
+  {
+    title: "OOP - Asteroids",
+    href: "asteroids/index.html",
+  },
 ];
 
 class ProgrammingNavBar extends NavBar {
