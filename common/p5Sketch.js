@@ -54,14 +54,10 @@ export default class P5Sketch extends HTMLElement {
         const lines = r.split('\n');
 
         lines
-          .map(r => r.replace('s.', ''))
           .forEach((line, lineNo) => {
-
-            if (lineNo > 0 && lineNo < lines.length - 2) {
               const code = document.createElement('code');
               code.innerHTML = line;
               pre.appendChild(code);
-            }
           });
       });
   }

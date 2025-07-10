@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../../css/style.css" rel="stylesheet">
+        <script type="module" src="../../common/p5Sketch.js"></script>
+        <script type="module" src="../../rootNavBar.js"></script>
+        <script type="module" src='../../programming/programmingNavBar.js'></script>
+        <script src='../../lib/p5.min.js'></script>
+        <title>OOP - Asteroids</title>
+    </head>
+    <body>
+        <root-nav-bar current='Programming' relative="../../"></root-nav-bar>
+        <programming-nav-bar current="Modify and Play" relative="../../programming/"></programming-nav-bar>
+        <main>
+            <h1>Object Oriented Programming - Asteroids</h1>
+            <p>This exercise will demonstrate the use of Object Oriented Programming principles to make a classic game Asteroids from 1979!</p>
+            <p>The intent is to show how intuitive modelling in objects can be, and show the power of these concepts</p>
+            <ul>
+                <li>Inheritance</li>
+                <li>Polymorphism</li>
+                <li>Abstraction</li>
+                <li>Encapsulation</li>
+                <li>the other one</li>
+            </ul>
+
+            <h2>Describe the Game</h2>
+            <a href="https://en.wikipedia.org/wiki/Asteroids_(video_game)">Wikipedia Article on the game</a>
+            <p>In asteroids, the player controls a <em>ship</em>. This ship is floating through space and the player views it as if from the top down. There are two forms of control for maneouvering the ship:</p>
+
+            <ul>
+                <li>Rotating clockwise or counter clockwise using the left/right arrow keys</li>
+                <li>Thrusters to go forward and backward, using the up and down arrow keys</li>
+                <li>The final control is the ability to shoot lasers, although these have no effect on the movement</li>
+            </ul>
+
+            <p>The player controls the ship in the vacuum of space, and they are surrounded by <em>asteriods</em> which are freely floating in space. The asteroids obey simple newtonian physics, and for this version of the game, if asteroids drift off the screen, they wrap around and appear on the other side of the screen.</p>
+            <p>The player will fire <em>lasers</em> at the asteroids and when they hit, the asteroid will break into multiple smaller chunks. Between 2 and 4 chunks, the size of which will be based on the size of the original and the number of chunks.
+                Once an asteroid is small enough, when it is hit it will simply be vapourised.
+            </p>
+            <p>All objects in the game will be under the influence of physics, asteroids will continue moving in one direction until they hit other asteroids, at which point they will bounce. When an asteroid is broken apart its pieces will fly in X evenly distributed directions. The players ship will continue floating in one direction until they use their thrust to change direction. The lasers will move in a single direction until they leave the screen, or hit an asteroid.</p>
+
+            <p>The player will score for each asteroid destroyed, smaller asteroids are worth more (harder to hit!)<p>
+            <p>The <em>score</em> will be shown in the corner of the screen<p>
+            <p>When the player collides with an asteroid, they are dead, game will read Game Over and they press 'fire' to restart</p>
+            <h2>Extract Potential Objects</h2>
+            Looking at the description, I have highlighted the nouns which are likely to form the basis of our <em>classes</em>.
+
+            <ul>
+                <li>Ship</li>
+                <li>Asteroid</li>
+                <li>Laser</li>
+                <li>Score</li>
+            </ul>
+
+            <p>
+                In terms of behaviour, the Ship, Asteroids and Laser all obey physics, so let's create an <em>Abstraction</em> to represet this concept. And use <em>Inheritance</em> to allow each specific object to gain the physics capability.
+                Our class hierarchy now looks like this.
+            </p>
+
+
+            <ul>
+                <li>PhysicsEntity
+                    <ul>
+                        <li>Ship</li>
+                        <li>Asteroid</li>
+                        <li>Laser</li>
+                    </ul>
+                </li>
+                <li>Score</li>
+            </ul>
+
+            <p>
+                Now that we've identified our initial design for classes, let's think about these two characteristics for each class.
+                <ul>
+                    <li>Associated data - will form the basis of attributes</li>
+                    <li>Behaviour - which will form the basis of methods</li>
+                </ul>
+            </p>
+            <h3>Physics Entity</h3>
+            <h4>Attributes</h4>
+            <p>To model simple newtonian physics, we will simply observe that:</p>
+            <p>Force -> Acceleration -> Velocity -> Position</p>
+            <p>We want these objects to move (change position), they do this because they have a velocity, the velocity can change due to acceleration, and the acceleration is caused by forces<p>
+            <p>Since this is a 2D game, each of these can be represented by a Vector</p>
+
+            <h4>Methods</h4>
+            <p>Physics objects will need to update their internal state each frame, so a method <code>update()</code> will tell them to use their own internal state to do this<p>
+            <p>To apply a force, we should probably have a method <code>applyForce(force: Vector)</code> which is then used on <code>update()</code> to modify the acceleration. For each frame of the animation, the force will be set to zero and then cumulatively added to as the overal simulation compels the objects to interact.</p>
+
+            <h4>Initial Code Attempt</h4>
+            <div class='p5-code'>
+                <p5-sketch src='./asteroids/physicsObject.js' containerId='physics-object'></p5-sketch>
+                <div id='physics-object'></div>
+            </div>
+
+            <h3>Score<h3>
+                <h4>Attributes</h4>
+                <p>Pretty simple this one, just a single number representing the score.</p>
+                <h4>Methods</h4>
+                <p>We need a method to add to the score, and to reset it once the game is over</p>
+                <h4>Initial Code Attempt</h4>
+            <div class='p5-code'>
+                <p5-sketch src='./asteroids/score.js' containerId='score'></p5-sketch>
+                <div id='score'></div>
+            </div>
+
+
+
+
+        </main>
+    </body>
+</html>
+
+
