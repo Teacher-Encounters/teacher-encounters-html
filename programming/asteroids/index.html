@@ -79,6 +79,11 @@
                     <li>Behaviour - which will form the basis of methods</li>
                 </ul>
             </p>
+                Just to give an early indication of how this can be mapped to code, below are a couple of examples
+                of classes defined in JavaScript.
+            </p>
+            <p>Note: In developing the sketch, I wouldn&apos;t generally program entire classes up front.
+                See the later <a href='#step-by-step'>step by step</a> section for how I might build up the code.</p>
             <h3>Physics Entity</h3>
             <h4>Attributes</h4>
             <p>To model simple newtonian physics, we will simply observe that:</p>
@@ -90,13 +95,13 @@
             <p>Physics objects will need to update their internal state each frame, so a method <code>update()</code> will tell them to use their own internal state to do this<p>
             <p>To apply a force, we should probably have a method <code>applyForce(force: Vector)</code> which is then used on <code>update()</code> to modify the acceleration. For each frame of the animation, the force will be set to zero and then cumulatively added to as the overal simulation compels the objects to interact.</p>
 
-            <h4>Initial Code Attempt</h4>
+            <h3>Indicative Code</h3>
             <div class='p5-code'>
-                <p5-sketch src='./asteroids/physicsObject.js' containerId='physics-object'></p5-sketch>
+                <p5-sketch src='./asteroids/physicsEntity.js' containerId='physics-object'></p5-sketch>
                 <div id='physics-object'></div>
             </div>
 
-            <h3>Score<h3>
+            <h3>Score</h3>
                 <h4>Attributes</h4>
                 <p>Pretty simple this one, just a single number representing the score.</p>
                 <h4>Methods</h4>
@@ -104,11 +109,16 @@
                 <h4>Initial Code Attempt</h4>
             <div class='p5-code'>
                 <p5-sketch src='./asteroids/score.js' containerId='score'></p5-sketch>
-                <div id='score'></div>
             </div>
 
-
-
+            <h3 id='step-by-step'>Step by Step</h3>
+            <h4>Getting Started</h4>
+            <p>In this step, all we will do is create the first version of Physics Entity class with a position, and draw it.</p>
+            <p>This will show how to create instances</p>
+            <div class='p5-code'>
+                <p5-sketch src='./asteroids/asteroids-1.js' containerId='asteroids-1'></p5-sketch>
+                <div id='asteroids-1'></div>
+            </div>
 
         </main>
     </body>
