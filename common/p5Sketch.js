@@ -1,64 +1,60 @@
-const sheet = new CSSStyleSheet();
-
-sheet.replaceSync(`
-pre {
-  white-space: pre;
-  counter-reset: line;
-  padding: 1rem;
-  margin: 0;
-  border: solid thin black;
-  border-collapse: collapse;
-  tab-size: 8;
-  display: flex;
-  flex-direction: column;
-}
-
-code {
-  tab-size: 8;
-  counter-increment: line;
-}
-
-code:before {
-  content: counter(line) ':';
-  user-select: none;
-  -webkit-user-select: none;
-}
-`);
-
 export default class P5Sketch extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
-    const shadow = this.attachShadow({ mode: "closed" });
-    const source = this.getAttribute("src");
-    const containerId = this.getAttribute('containerId');
+    const shadow = this.attachShadow({ mode: "open" });
 
     const pre = document.createElement('pre');
+    this.code = document.createElement('code');
+    this.code.classList.add('language-js');
+
+    // Get styles
+    const prismStyle = document.createElement('link');
+    prismStyle.setAttribute('rel', 'stylesheet');
+    prismStyle.setAttribute('href', '/css/prism.css');
+
+    // Get prism lib
+    const prismScript = document.createElement('script');
+    prismScript.src = '/lib/prism.js';
+    prismScript.onload = () => this.renderCode();
+
+    shadow.appendChild(prismStyle);
+    shadow.appendChild(prismScript);
+    shadow.appendChild(pre);
+    pre.appendChild(this.code);
+
+    this.shadow = shadow;
+  }
+
+  renderCode() {
+    const source = this.getAttribute("src");
+    const containerId = this.getAttribute('containerId');
 
     const scriptTag = document.createElement('script');
     scriptTag.src = source;
     scriptTag.setAttribute('type', 'module');
-
-    shadow.appendChild(scriptTag);
-    shadow.appendChild(pre);
-    shadow.adoptedStyleSheets = [sheet];
+    this.shadow.appendChild(scriptTag);
 
     // Load the p5 JS file and run it
     fetch(source)
       .then(r => r.text())
       .then((r) => {
+        this.code.innerHTML = r;
+
+        // Prism highlight
+        if (window.Prism) {
+          Prism.highlightElement(this.code);
+        }
+        if (!containerId) return;
+
+        const container = document.getElementById(containerId);
+
+        if (!container) return;
+
         const s = eval(r);
         new p5(s, document.getElementById(containerId));
-        const lines = r.split('\n');
-
-        lines
-          .forEach((line, lineNo) => {
-              const code = document.createElement('code');
-              code.innerHTML = line;
-              pre.appendChild(code);
-          });
       });
   }
 }

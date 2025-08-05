@@ -121,10 +121,6 @@ details[open] summary {
   margin-bottom: 0.5em;
 }
 
-pre {
-  white-space: pre-line;
-}
-
 /* May look odd on smaller screens but shows nav bar */
 embed {
   height: 90vh;
