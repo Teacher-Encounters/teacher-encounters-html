@@ -127,4 +127,15 @@ embed {
   width: 100vw;
 }
 
+/* Create two columns/boxes that floats next to each other */
+sec1 {
+  float: left;
+  width: 40%;
+  padding: 20px;
+}
 
+sec2 {
+  float: right;
+  padding: 20px;
+  width: 40%;
+}
