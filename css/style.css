@@ -127,15 +127,20 @@ embed {
   width: 100vw;
 }
 
-/* Create two columns/boxes that floats next to each other */
+/* Create two columns/boxes that float next to each other */
 sec1 {
   float: left;
   width: 40%;
   padding: 20px;
+  background-color: lightgrey;
+  border-right-style: solid;
+  border-right-width: 1px;
 }
 
 sec2 {
-  float: right;
+  float: left;
   padding: 20px;
-  width: 40%;
+  width: 30%;
+  background-color: lightgrey;
 }
+  
