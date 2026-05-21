@@ -24,6 +24,10 @@ th, td {
   padding: 1em;
 }
 
+tr {
+  margin: 2px;
+}
+
 .p5-code {
   display: flex;
   flex-direction: row;
