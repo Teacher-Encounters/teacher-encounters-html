@@ -1,3 +1,8 @@
+import img_1 from "../../assets/gitbook/image (1).png";
+import img_2 from "../../assets/gitbook/image (2).png";
+import img_3 from "../../assets/gitbook/image (3).png";
+import img_4 from "../../assets/gitbook/image (4).png";
+import img_5 from "../../assets/gitbook/image (5).png";
 function Networks() {
   return (
     <main>
@@ -28,10 +33,7 @@ function Networks() {
         need to share files they use a USB stick to move files from one machine
         to another. Here is a diagram of this initial setup.
       </p>
-      <img
-        src="../.gitbook/assets/image (1).png"
-        alt="Initial Setup - Independent Machines"
-      />
+      <img src={img_1} alt="Initial Setup - Independent Machines" />
       <h3>Second Setup - Peer to Peer file sharing</h3>
       <p>
         After a while, they become rather tired of having to copy files using
@@ -106,7 +108,7 @@ function Networks() {
       </ul>
       <p>The network now looks like this.</p>
       <img
-        src="../.gitbook/assets/image (2).png"
+        src={img_2}
         alt="Local Area Network with Peer to Peer file sharing"
       />
       <h3>Third Setup - Client Server</h3>
@@ -146,7 +148,7 @@ function Networks() {
         </li>
       </ul>
       <p>Our network now looks like this:</p>
-      <img src="../.gitbook/assets/image (3).png" alt="Client Server LAN" />
+      <img src={img_3} alt="Client Server LAN" />
       <h3>Fourth Setup - The Internet & Cloud</h3>
       <p>
         Some time goes by, and it becomes apparent that law firms will need to
@@ -191,10 +193,7 @@ function Networks() {
         </li>
       </ul>
       <p>The system now looks like this:</p>
-      <img
-        src="../.gitbook/assets/image (4).png"
-        alt="Internet and the Cloud"
-      />
+      <img src={img_4} alt="Internet and the Cloud" />
       <p>
         Our law firm LAN still has a server, but it is only providing DHCP in
         this network, most real LANs get this functionality from a single box
@@ -266,10 +265,7 @@ function Networks() {
         This shows how to communicate across two LANs with a WAN in between.
       </p>
 
-      <img
-        src="../.gitbook/assets/image (5).png"
-        alt="Routing Across Two LANs"
-      />
+      <img src={img_5} alt="Routing Across Two LANs" />
     </main>
   );
 }

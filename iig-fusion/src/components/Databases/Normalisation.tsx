@@ -1,3 +1,8 @@
+import img_1nf from "../../assets/databases/1nf.jpg";
+import img_1nf_correct from "../../assets/databases/1nf_correct.jpg";
+import img_1nf_pk from "../../assets/databases/1nf_pk.jpg";
+import img_2nf from "../../assets/databases/2nf.jpg";
+import img_3nf from "../../assets/databases/3nf.jpg";
 function Normalisation() {
   return (
     <main>
@@ -71,7 +76,7 @@ function Normalisation() {
           also have their key made more explicit.
           <br />
           <br />
-          <img src="../assets/databases/1nf.jpg" alt="Example in 1NF" />
+          <img src={img_1nf} alt="Example in 1NF" />
           <br />
           <br />
           I've separated the candidate keys from the normal attributes. The
@@ -107,7 +112,7 @@ function Normalisation() {
           Now we will correct the key to always use the PRIMARY KEY.
           <br />
           <br />
-          <img src="../assets/databases/1nf_pk.jpg" alt="Example in 1NF" />
+          <img src={img_1nf_pk} alt="Example in 1NF" />
           <br />
           <br />
           <br />
@@ -144,7 +149,7 @@ function Normalisation() {
           FRIENDS and not PEOPLE or UPDATES then definitely keep it.
           <br />
           <br />
-          <img src="../assets/databases/1nf_correct.jpg" alt="Example in 1NF" />
+          <img src={img_1nf_correct} alt="Example in 1NF" />
           <br />
           <br />
         </div>
@@ -172,7 +177,7 @@ function Normalisation() {
         and Event ID.
         <br />
         <br />
-        <img src="../assets/databases/2nf.jpg" alt="Example in 2NF" />
+        <img src={img_2nf} alt="Example in 2NF" />
         <br />
         <br />
       </div>
@@ -199,7 +204,7 @@ function Normalisation() {
         instead assume we want to store Home Address for our PEOPLE.
         <br />
         <br />
-        <img src="../assets/databases/3nf.jpg" alt="Example in 2NF to 3NF" />
+        <img src={img_3nf} alt="Example in 2NF to 3NF" />
         <br />
         <br />
         We can see that "Country" depends on both "Personal ID" (as it's their

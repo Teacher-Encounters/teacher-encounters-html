@@ -26,7 +26,7 @@
 
   h2 {
     margin-top: 0;
-    color: variables.$accent-purple;
+    color: variables.$accent-red;
   }
 
   ul {
@@ -43,13 +43,13 @@
     color: variables.$text-main;
 
     &:hover {
-      color: variables.$accent-blue;
+      color: variables.$accent-red;
     }
   }
 
   .subnav {
     padding-left: 0.75rem;
-    border-left: 2px solid variables.$accent-purple;
+    border-left: 2px solid variables.$accent-red;
     display: flex;
     flex-direction: column;
 

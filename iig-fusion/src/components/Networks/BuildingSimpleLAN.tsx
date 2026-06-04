@@ -1,3 +1,15 @@
+import img_14 from "../../assets/gitbook/image (14).png";
+import img_15 from "../../assets/gitbook/image (15).png";
+import img_16 from "../../assets/gitbook/image (16).png";
+import img_17 from "../../assets/gitbook/image (17).png";
+import img_18 from "../../assets/gitbook/image (18).png";
+import img_19 from "../../assets/gitbook/image (19).png";
+import img_20 from "../../assets/gitbook/image (20).png";
+import img_21 from "../../assets/gitbook/image (21).png";
+import img_22 from "../../assets/gitbook/image (22).png";
+import img_23 from "../../assets/gitbook/image (23).png";
+import img_24 from "../../assets/gitbook/image (24).png";
+import img_25 from "../../assets/gitbook/image (25).png";
 function BuildingSimpleLAN() {
   return (
     <main>
@@ -14,7 +26,7 @@ function BuildingSimpleLAN() {
           Place a <em>2960</em> switch onto the network
         </li>
       </ul>
-      <img src="../.gitbook/assets/image (14).png" alt="Placing a Switch" />
+      <img src={img_14} alt="Placing a Switch" />
 
       <h2>Place Two PCs on the Network</h2>
       <ol>
@@ -26,7 +38,7 @@ function BuildingSimpleLAN() {
         </li>
         <li>Place two PCs onto the network</li>
       </ol>
-      <img src="../.gitbook/assets/image (15).png" alt="Placing Two PCs" />
+      <img src={img_15} alt="Placing Two PCs" />
 
       <h2>Physically Connect PCs to the Switch</h2>
       <ol>
@@ -48,17 +60,10 @@ function BuildingSimpleLAN() {
           Select one of the <em>Fast Ethernet (x) </em> ports
         </li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (16).png"
-        alt="Select Copper Straight Through"
-      />
-      <img src="../.gitbook/assets/image (17).png" alt="Connect to PC" />
-      <img src="../.gitbook/assets/image (18).png" alt="Connect to Switch" />
-      <img
-        src="../.gitbook/assets/image (19).png"
-        alt="Physical Connections Made"
-      />
-
+      <img src={img_16} alt="Select Copper Straight Through" />
+      <img src={img_17} alt="Connect to PC" />
+      <img src={img_18} alt="Connect to Switch" />
+      <img src={img_19} alt="Physical Connections Made" />
       <h2>Setup Static IP addresses on PCs</h2>
       <ol>
         <li>
@@ -86,15 +91,12 @@ function BuildingSimpleLAN() {
           <strong>192.168.0.3</strong>
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (20).png" alt="PC Physical Config" />
-      <img
-        src="../.gitbook/assets/image (21).png"
-        alt="Setup Static IP address"
-      />
-      <img
-        src="../.gitbook/assets/image (22).png"
-        alt="Check IP address in PC tooltip"
-      />
+      <img src={img_20} alt="PC Physical Config" />
+      <img src={img_21} alt="Setup Static IP address" />
+      <img src={img_22} alt="Check IP address in PC tooltip" />
+      <img src={img_23} alt="Select Add Simple PDU" />
+      <img src={img_24} alt="Select Source for PDU" />
+      <img src={img_25} alt="Check PDU success" />
 
       <h2>Test the Network Connection using Send PDU</h2>
       <p>
@@ -110,15 +112,9 @@ function BuildingSimpleLAN() {
         <li>Click on the other PC, and it should attempt the ping</li>
         <li>Check the PDU success in the bottom right panel</li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (23).png"
-        alt="Select Add Simple PDU"
-      />
-      <img
-        src="../.gitbook/assets/image (24).png"
-        alt="Select Source for PDU"
-      />
-      <img src="../.gitbook/assets/image (25).png" alt="Check PDU success" />
+      <img src={img_23} alt="Select Add Simple PDU" />
+      <img src={img_24} alt="Select Source for PDU" />
+      <img src={img_25} alt="Check PDU success" />
     </main>
   );
 }

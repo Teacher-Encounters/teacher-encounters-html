@@ -9,14 +9,14 @@ body {
 }
 
 a {
-  color: variables.$accent-blue;
+  color: variables.$accent-red;
   text-decoration: none;
   font-weight: 500;
 }
 
 a:hover {
-  color: color.scale(variables.$accent-blue, $lightness: 10%);
-  text-shadow: 0 0 10px color.scale(variables.$accent-blue, $lightness: 10%);
+  color: color.scale(variables.$accent-red, $lightness: 10%);
+  text-shadow: 0 0 10px color.scale(variables.$accent-red, $lightness: 10%);
 }
 
 article,

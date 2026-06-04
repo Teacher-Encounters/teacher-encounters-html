@@ -1,3 +1,11 @@
+import img_64 from "../../assets/gitbook/image (64).png";
+import img_63 from "../../assets/gitbook/image (63).png";
+import img_62 from "../../assets/gitbook/image (62).png";
+import img_66 from "../../assets/gitbook/image (66).png";
+import img_67 from "../../assets/gitbook/image (67).png";
+import img_68 from "../../assets/gitbook/image (68).png";
+import img_69 from "../../assets/gitbook/image (69).png";
+import img_72 from "../../assets/gitbook/image (72).png";
 function SettingUpEmail() {
   return (
     <main>
@@ -34,11 +42,8 @@ function SettingUpEmail() {
           </ul>
         </li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (64).png"
-        alt="Server Email Configuration"
-      />
-      <img src="../.gitbook/assets/image (62).png" alt="Add Users" />
+      <img src={img_64} alt="Server Email Configuration" />
+      <img src={img_62} alt="Add Users" />
 
       <h2>Setup DNS for Mail Server</h2>
       <ol>
@@ -58,7 +63,7 @@ function SettingUpEmail() {
         have used, but I'm creating a distinct record just so it looks more like
         a real-life domain.
       </p>
-      <img src="../.gitbook/assets/image (63).png" alt="Mail Server DNS" />
+      <img src={img_63} alt="Mail Server DNS" />
 
       <h2>Setup Email on PC</h2>
       <ol>
@@ -80,12 +85,8 @@ function SettingUpEmail() {
         </li>
         <li>Repeat on the other PC, but for the other user</li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (66).png"
-        alt="Desktop PC - Select Email"
-      />
-      <img src="../.gitbook/assets/image (67).png" alt="PC Configure Email" />
-
+      <img src={img_66} alt="Desktop PC - Select Email" />
+      <img src={img_67} alt="PC Configure Email" />
       <h2>Send an Email</h2>
       <p>
         Now that each PC is configured with an email address, when you visit the
@@ -103,9 +104,9 @@ function SettingUpEmail() {
           Go to the email application on the other PC and check it was received
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (68).png" alt="PC Email Client" />
-      <img src="../.gitbook/assets/image (69).png" alt="Compose Email" />
-      <img src="../.gitbook/assets/image (72).png" alt="Email Received" />
+      <img src={img_68} alt="PC Email Client" />
+      <img src={img_69} alt="Compose Email" />
+      <img src={img_72} alt="Email Received" />
     </main>
   );
 }

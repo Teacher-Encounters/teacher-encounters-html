@@ -1,3 +1,8 @@
+import img_58 from "../../assets/gitbook/image (58).png";
+import img_57 from "../../assets/gitbook/image (57).png";
+import img_56 from "../../assets/gitbook/image (56).png";
+import img_59 from "../../assets/gitbook/image (59).png";
+import img_60 from "../../assets/gitbook/image (60).png";
 function SettingUpDHCP() {
   return (
     <main>
@@ -44,7 +49,7 @@ function SettingUpDHCP() {
         </li>
         <li>Close the window</li>
       </ol>
-      <img src="../.gitbook/assets/image (58).png" alt="Server Setup DHCP" />
+      <img src={img_58} alt="Server Setup DHCP" />
 
       <h2>Setup IP details on Server</h2>
       <p>
@@ -69,11 +74,8 @@ function SettingUpDHCP() {
         </li>
         <li>Close that app on the desktop, then close the window</li>
       </ol>
-      <img src="../.gitbook/assets/image (57).png" alt="Server Desktop" />
-      <img
-        src="../.gitbook/assets/image (56).png"
-        alt="Server Desktop IP configuration"
-      />
+      <img src={img_57} alt="Server Desktop" />
+      <img src={img_56} alt="Server Desktop IP configuration" />
 
       <h2>Setup DHCP on each PC</h2>
       <ol>
@@ -90,8 +92,8 @@ function SettingUpDHCP() {
           received
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (59).png" alt="PC Desktop" />
-      <img src="../.gitbook/assets/image (60).png" alt="PC IP Configuration" />
+      <img src={img_59} alt="PC Desktop" />
+      <img src={img_60} alt="PC IP Configuration" />
     </main>
   );
 }

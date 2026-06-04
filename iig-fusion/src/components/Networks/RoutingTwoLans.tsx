@@ -1,3 +1,15 @@
+import img_26 from "../../assets/gitbook/image (26).png";
+import img_28 from "../../assets/gitbook/image (28).png";
+import img_29 from "../../assets/gitbook/image (29).png";
+import img_30 from "../../assets/gitbook/image (30).png";
+import img_32 from "../../assets/gitbook/image (32).png";
+import img_33 from "../../assets/gitbook/image (33).png";
+import img_34 from "../../assets/gitbook/image (34).png";
+import img_35 from "../../assets/gitbook/image (35).png";
+import img_36 from "../../assets/gitbook/image (36).png";
+import img_37 from "../../assets/gitbook/image (37).png";
+import img_39 from "../../assets/gitbook/image (39).png";
+import img_40 from "../../assets/gitbook/image (40).png";
 function RoutingTwoLans() {
   return (
     <main>
@@ -22,12 +34,8 @@ function RoutingTwoLans() {
           <em>Gigabit Ethernet 0/0/0</em> on the router
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (26).png" alt="Finding a Router" />
-      <img
-        src="../.gitbook/assets/image (28).png"
-        alt="Physically Connect Router"
-      />
-
+      <img src={img_26} alt="Finding a Router" />
+      <img src={img_28} alt="Physically Connect Router" />
       <h2>Assign Router IP addresses for our LAN</h2>
       <ol>
         <li>
@@ -55,16 +63,10 @@ function RoutingTwoLans() {
           and the Router
         </li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (29).png"
-        alt="Physical Router Config"
-      />
-      <img
-        src="../.gitbook/assets/image (30).png"
-        alt="Configure Gigabit Ethernet 0/0/0 on Router"
-      />
-      <img src="../.gitbook/assets/image (32).png" alt="LAN with Router" />
-      <img src="../.gitbook/assets/image (33).png" alt="Test Router to PC" />
+      <img src={img_29} alt="Physical Router Config" />
+      <img src={img_30} alt="Configure Gigabit Ethernet 0/0/0 on Router" />
+      <img src={img_32} alt="LAN with Router" />
+      <img src={img_33} alt="Test Router to PC" />
 
       <h2>Build a Second LAN</h2>
       <p>
@@ -78,9 +80,9 @@ function RoutingTwoLans() {
           Use Ctrl C (or CMD C on Mac) and Ctrl V (CMD V) to copy and paste
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (34).png" alt="Selection Tool" />
-      <img src="../.gitbook/assets/image (35).png" alt="Select LAN" />
-      <img src="../.gitbook/assets/image (36).png" alt="Pasted Second LAN" />
+      <img src={img_34} alt="Selection Tool" />
+      <img src={img_35} alt="Select LAN" />
+      <img src={img_36} alt="Pasted Second LAN" />
 
       <h2>Setup second LAN IP Addresses</h2>
       <p>
@@ -158,10 +160,7 @@ function RoutingTwoLans() {
           </tr>
         </tbody>
       </table>
-      <img
-        src="../.gitbook/assets/image (37).png"
-        alt="Routers connected to each other"
-      />
+      <img src={img_37} alt="Routers connected to each other" />
 
       <h2>Setup Static Routing on Routers</h2>
       <ol>
@@ -192,7 +191,7 @@ function RoutingTwoLans() {
           </ul>
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (39).png" alt="Setup Static Routing" />
+      <img src={img_39} alt="Setup Static Routing" />
 
       <h2>Setup Default Gateway on PCs</h2>
       <p>
@@ -226,7 +225,7 @@ function RoutingTwoLans() {
           router, then to the other router, then finally a PC on the other LAN
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (40).png" alt="Test Router to PC" />
+      <img src={img_40} alt="Test Router to PC" />
     </main>
   );
 }

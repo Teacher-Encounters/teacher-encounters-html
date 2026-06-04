@@ -1,3 +1,15 @@
+import img_41 from "../../assets/gitbook/image (41).png";
+import img_42 from "../../assets/gitbook/image (42).png";
+import img_43 from "../../assets/gitbook/image (43).png";
+import img_44 from "../../assets/gitbook/image (44).png";
+import img_45 from "../../assets/gitbook/image (45).png";
+import img_46 from "../../assets/gitbook/image (46).png";
+import img_47 from "../../assets/gitbook/image (47).png";
+import img_48 from "../../assets/gitbook/image (48).png";
+import img_49 from "../../assets/gitbook/image (49).png";
+import img_50 from "../../assets/gitbook/image (50).png";
+import img_51 from "../../assets/gitbook/image (51).png";
+import img_52 from "../../assets/gitbook/image (52).png";
 function SettingUpWebServer() {
   return (
     <main>
@@ -6,7 +18,7 @@ function SettingUpWebServer() {
         This tutorial will assume you have built a simple LAN. The PCs already
         have the following configuration.
       </p>
-      <img src="../.gitbook/assets/image (41).png" alt="Starting LAN" />
+      <img src={img_41} alt="Starting LAN" />
 
       <table>
         <thead>
@@ -39,7 +51,7 @@ function SettingUpWebServer() {
           Click on <em>Server</em> and drag it onto your network
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (42).png" alt="Add Server" />
+      <img src={img_42} alt="Add Server" />
 
       <h2>Configure and Connect Server</h2>
       <ol>
@@ -61,15 +73,9 @@ function SettingUpWebServer() {
           <em>Fast Ethernet 0</em> on the <em>Server</em>
         </li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (43).png"
-        alt="Server Physical Config"
-      />
-      <img src="../.gitbook/assets/image (44).png" alt="Server Module Config" />
-      <img
-        src="../.gitbook/assets/image (45).png"
-        alt="Server Connect Fast Ethernet"
-      />
+      <img src={img_43} alt="Server Physical Config" />
+      <img src={img_44} alt="Server Module Config" />
+      <img src={img_45} alt="Server Connect Fast Ethernet" />
 
       <h2>Setup HTTP server</h2>
       <ol>
@@ -101,10 +107,9 @@ function SettingUpWebServer() {
           being served
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (46).png" alt="HTTP Server Config" />
-      <img src="../.gitbook/assets/image (47).png" alt="PC Desktop" />
-      <img src="../.gitbook/assets/image (48).png" alt="Visiting a Web Page" />
-
+      <img src={img_46} alt="HTTP Server Config" />
+      <img src={img_47} alt="PC Desktop" />
+      <img src={img_48} alt="Visiting a Web Page" />
       <h2>Setup DNS on Server</h2>
       <p>
         One of the key protocols you need to understand is the Domain Name
@@ -134,12 +139,8 @@ function SettingUpWebServer() {
           Click on <em>Add</em> to add the A Record for that site
         </li>
       </ol>
-      <img
-        src="../.gitbook/assets/image (49).png"
-        alt="Enter 'A Record' details"
-      />
-      <img src="../.gitbook/assets/image (50).png" alt="'A Record' created" />
-
+      <img src={img_49} alt="Enter 'A Record' details" />
+      <img src={img_50} alt="'A Record' created" />
       <h2>Setup DNS on PCs</h2>
       <p>
         Now that we have a DNS running on the server, we need to tell each PC.
@@ -169,11 +170,8 @@ function SettingUpWebServer() {
           should open the same page as before
         </li>
       </ol>
-      <img src="../.gitbook/assets/image (51).png" alt="Setup DNS on PC" />
-      <img
-        src="../.gitbook/assets/image (52).png"
-        alt="Visit Web page using DNS"
-      />
+      <img src={img_51} alt="Setup DNS on PC" />
+      <img src={img_52} alt="Visit Web page using DNS" />
     </main>
   );
 }

@@ -1,3 +1,8 @@
+import chen_shapes from "../../assets/databases/chen_shapes.jpg";
+import chen_eg from "../../assets/databases/chen_eg.jpg";
+import crow_foot_shapes from "../../assets/databases/crow_foot_shapes.jpg";
+import crow_foot_eg from "../../assets/databases/crow_foot_eg.jpg";
+import crow_foot_eg_eerd from "../../assets/databases/crow_foot_eg_eerd.jpg";
 function EntityRelationshipDiagrams() {
   return (
     <main>
@@ -18,10 +23,7 @@ function EntityRelationshipDiagrams() {
         shapes however these are rarely required and may be an evolution or
         variant of Chen's Notation.
       </p>
-      <img
-        src="../assets/databases/chen_shapes.jpg"
-        alt="Shapes and Lines for Chen's Notation"
-      />
+      <img src={chen_shapes} alt="Shapes and Lines for Chen's Notation" />
       <div className="eg">
         Now lets create an ERD using this notation. To illustrate all possible
         shapes I used an associative entity for "Attendees". In our original
@@ -30,10 +32,7 @@ function EntityRelationshipDiagrams() {
         entity and a relationship. It defines the Many to Many relationship
         between EVENTS and PEOPLE but is also an entity in and of itself. <br />
         <br />
-        <img
-          src="../assets/databases/chen_eg.jpg"
-          alt="Example Chen's Notation"
-        />
+        <img src={chen_eg} alt="Example Chen's Notation" />
       </div>
       <h2>Crow's Foot Notation</h2>
       <p>
@@ -45,27 +44,21 @@ function EntityRelationshipDiagrams() {
         you only need the illustrated below shapes and lines.
       </p>
       <img
-        src="../assets/databases/crow_foot_shapes.jpg"
+        src={crow_foot_shapes}
         alt="Shapes and Lines for Crow's Foot Notation"
       />
       <div className="eg">
         Now lets convert the previous ERD into this notation.
         <br />
         <br />
-        <img
-          src="../assets/databases/crow_foot_eg.jpg"
-          alt="Example Chen's Notation"
-        />
+        <img src={crow_foot_eg} alt="Example Chen's Notation" />
         <br />
         <br />
         If you used a DBMS to generate an ERD you may end up with an enhanced
         ERD (EERD) like below.
         <br />
         <br />
-        <img
-          src="../assets/databases/crow_foot_eg_eerd.jpg"
-          alt="Example Chen's Notation"
-        />
+        <img src={crow_foot_eg_eerd} alt="Example Chen's Notation" />
       </div>
       <div className="info">
         Optional or not Optional? In this case I've opted to not use Optional
