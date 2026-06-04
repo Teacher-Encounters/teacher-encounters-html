@@ -4,7 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import "./styles/main.scss";
 import { ROUTES } from "./routes.tsx";
-const router = createBrowserRouter(ROUTES);
+const router = createBrowserRouter(ROUTES, {
+  basename: import.meta.env.DEV ? "/" : "/teacher-encounters-html/",
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
