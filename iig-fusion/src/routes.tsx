@@ -1,0 +1,128 @@
+import type { RouteObject } from "react-router";
+import Home from "./components/Home";
+import ALevel from "./components/ALevel";
+
+// Database components
+import Databases from "./components/Databases/Databases";
+import EntityRelationshipDiagrams from "./components/Databases/EntityRelationshipDiagrams";
+import SQL from "./components/Databases/SQL";
+import SQLite from "./components/Databases/SQLite";
+import Terminology from "./components/Databases/Terminology";
+import Normalisation from "./components/Databases/Normalisation";
+
+// Networks
+import Networks from "./components/Networks/Networks";
+import BuildingSimpleLAN from "./components/Networks/BuildingSimpleLAN";
+import RoutingTwoLans from "./components/Networks/RoutingTwoLans";
+import SettingUpDHCP from "./components/Networks/SettingUpDHCP";
+import SettingUpEmail from "./components/Networks/SettingUpEmail";
+import SettingUpWebServer from "./components/Networks/SettingUpWebServer";
+
+// Industry
+import Industry from "./components/Industry/Industry";
+import IndustryProfiles from "./components/Industry/IndustryProfiles";
+import SDLC from "./components/Industry/SDLC";
+
+// Root
+import App from "./App";
+
+export type NavHandle = {
+  navSection: string;
+};
+
+export const ROUTES: RouteObject[] = [
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+        handle: { navSection: "Home" },
+      },
+      {
+        path: "a-level",
+        element: <ALevel />,
+        handle: { navSection: "A-Level" },
+      },
+      {
+        path: "/industry",
+        handle: { navSection: "Industry" },
+        children: [
+          {
+            index: true,
+            element: <Industry />,
+          },
+          {
+            path: "profiles",
+            element: <IndustryProfiles />,
+          },
+          {
+            path: "sdlc",
+            element: <SDLC />,
+          },
+        ],
+      },
+      {
+        path: "/networks",
+        handle: { navSection: "Networks" },
+        children: [
+          {
+            index: true,
+            element: <Networks />,
+          },
+          {
+            path: "simple-lan",
+            element: <BuildingSimpleLAN />,
+          },
+          {
+            path: "routing-two-lans",
+            element: <RoutingTwoLans />,
+          },
+          {
+            path: "setting-up-dhcp",
+            element: <SettingUpDHCP />,
+          },
+          {
+            path: "setting-up-email",
+            element: <SettingUpEmail />,
+          },
+          {
+            path: "setting-up-web-server",
+            element: <SettingUpWebServer />,
+          },
+        ],
+      },
+      {
+        path: "/databases",
+        handle: { navSection: "Databases" },
+        children: [
+          {
+            index: true,
+            element: <Databases />,
+          },
+          {
+            path: "entity-relationship-diagrams",
+            element: <EntityRelationshipDiagrams />,
+          },
+          {
+            path: "sql",
+            element: <SQL />,
+          },
+          {
+            path: "sqlite",
+            element: <SQLite />,
+          },
+          {
+            path: "normalisation",
+            element: <Normalisation />,
+          },
+          {
+            path: "terminology",
+            element: <Terminology />,
+          },
+        ],
+      },
+    ],
+  },
+];

@@ -1,0 +1,18 @@
+@use "sass:color";
+
+$bp-mobile: 700px;
+$bg-dark: #1e0b0b;
+$bg-card: #501818;
+$accent-purple: #ff5c5c;
+$accent-blue: #ff4d4d;
+$text-main: #e6e6f0;
+$text-muted: #a8a8c0;
+$separator: rgba(255, 255, 255, 0.1);
+$border-light: rgba(255, 255, 255, 0.1);
+$shadow-soft: 0 0 20px rgba(0, 0, 0, 0.3);
+
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
