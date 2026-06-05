@@ -18,9 +18,9 @@ function App() {
       </button>
       <div className="layout">
         <NavBar navRef={navRef} onClose={onClickNavToggle} />
-        <main className="content">
+        <div className="content">
           <Outlet />
-        </main>
+        </div>
       </div>
       <PageFooter />
     </div>

@@ -17,7 +17,7 @@
 
 .content {
   flex: 1;
-  max-width: 700px;
+  max-width: variables.$bp-mobile;
   padding: 1rem;
   margin: 0 auto;
   box-sizing: border-box;
@@ -25,4 +25,8 @@
   @include variables.mobile {
     padding: 1.5rem;
   }
+}
+
+img {
+  max-width: variables.$bp-mobile;
 }

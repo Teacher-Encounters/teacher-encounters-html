@@ -23,3 +23,18 @@
   border: 1px solid variables.$border-light;
   border-radius: 8px;
 }
+
+.card h4 {
+  margin-top: 0;
+}
+
+.info {
+  border-color: green;
+}
+
+.warning {
+  border-color: yellow;
+}
+.danger {
+  border-color: red;
+}

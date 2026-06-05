@@ -1,3 +1,5 @@
+import WarningBox from "../WarningBox";
+
 function SQL() {
   return (
     <main>
@@ -346,11 +348,11 @@ function SQL() {
               more records. Update may fail if your update fails any existing
               constraint on your table similar to when <code>INSERT</code>{" "}
               fails.
-              <p className="danger">
+              <WarningBox level="danger">
                 Yes you can run an update without a <code>WHERE</code> being
                 provided. However this means you will update all records. Odds
                 are you don't want that.
-              </p>
+              </WarningBox>
             </li>
             <li>
               <pre>DELETE tableName WHERE primaryKey = 1;</pre>
@@ -365,7 +367,7 @@ function SQL() {
               customer. Delete the orders first then the customer.
             </li>
           </ul>
-          <div className="warn">
+          <WarningBox level="warning">
             Be aware your database may not fail <code>DELETE</code> or{" "}
             <code>UPDATE</code> when it comes to referential integrity. In the
             previous example we had a customer being deleted before their
@@ -400,7 +402,7 @@ function SQL() {
                 <code>DEFAULT</code> set then an error will be raised.
               </li>
             </ul>
-          </div>
+          </WarningBox>
         </div>
         <div className="eg">
           Lets start with our DDL. It is important to ensure you create your
@@ -555,7 +557,7 @@ function SQL() {
             </li>
           </ul>
         </div>
-        <div className="warn">
+        <WarningBox level="warning">
           Be careful of SQL INJECTION. Like any form of injection attack it
           starts by taking user input and not checking it's safe. Therefore we
           could have the following code:
@@ -587,7 +589,7 @@ function SQL() {
           </pre>
           These methods ensure the input is correctly escaped to prevent SQL
           Injection.
-        </div>
+        </WarningBox>
       </div>
     </main>
   );

@@ -1,3 +1,5 @@
+import WarningBox from "../WarningBox";
+
 function Databases() {
   return (
     <main>
@@ -53,13 +55,13 @@ function Databases() {
           </li>
         </ul>
       </p>
-      <p className="warn">
+      <WarningBox level="warning">
         Please do not create your own FaceBase. Not because I've trademarked
         that awesome name or the idea itself. But rather, if you remember, we
         have rights to our data under Data Protection Act and GDPR. I don't
         think FaceBase will pass GDPR unless it's empty of any data relating to
         real people!
-      </p>
+      </WarningBox>
       <div className="eg">
         Now will we draft our first version of the data:
         <ol>
@@ -143,12 +145,12 @@ function Databases() {
           </li>
         </ol>
       </p>
-      <p className="danger">
+      <WarningBox level="danger">
         Excel and other spreadsheets may <i>appear</i> similar to databases. But
         they are NOT databases. Using a spreadsheet as a database may result in
         data being lost or corrupted. More importantly the benefits above we
         don't get. So don't confuse Excel with databases.
-      </p>
+      </WarningBox>
     </main>
   );
 }

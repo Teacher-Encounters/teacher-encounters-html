@@ -3,6 +3,7 @@ import chen_eg from "../../assets/databases/chen_eg.jpg";
 import crow_foot_shapes from "../../assets/databases/crow_foot_shapes.jpg";
 import crow_foot_eg from "../../assets/databases/crow_foot_eg.jpg";
 import crow_foot_eg_eerd from "../../assets/databases/crow_foot_eg_eerd.jpg";
+import WarningBox from "../WarningBox";
 function EntityRelationshipDiagrams() {
   return (
     <main>
@@ -60,7 +61,7 @@ function EntityRelationshipDiagrams() {
         <br />
         <img src={crow_foot_eg_eerd} alt="Example Chen's Notation" />
       </div>
-      <div className="info">
+      <WarningBox level="info">
         Optional or not Optional? In this case I've opted to not use Optional
         relationships. This is because I have assumed:
         <ul>
@@ -85,7 +86,7 @@ function EntityRelationshipDiagrams() {
         FRIENDS. As you need to store strangers in your PEOPLE table for all
         attendees to be recorded. Yet many of these PEOPLE are not in your
         FRIENDS table either as a friend or as someone unfriended.
-      </div>
+      </WarningBox>
     </main>
   );
 }
