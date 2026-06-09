@@ -25,6 +25,7 @@ import SDLC from "./components/Industry/SDLC";
 
 // Root
 import App from "./App";
+import WorkExperience from "./components/Industry/WorkExperience";
 
 export type NavHandle = {
   navSection: string;
@@ -60,6 +61,10 @@ export const ROUTES: RouteObject[] = [
           {
             path: "sdlc",
             element: <SDLC />,
+          },
+          {
+            path: "work-experience",
+            element: <WorkExperience />,
           },
         ],
       },

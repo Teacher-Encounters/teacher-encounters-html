@@ -44,6 +44,11 @@ function NavBar({ navRef, onClose }: Props) {
                 Industry Profiles
               </Link>
             </li>
+            <li>
+              <Link to="/industry/work-experience" onClick={onClose}>
+                Work Experience
+              </Link>
+            </li>
           </ul>
         </li>
         <li>
